@@ -77,7 +77,8 @@ button:focus {
 }
 
 .notes {
-  justify-content: center;
+  justify-content: flex-end;
+  height: fit-content;
   display: flex;
   flex-direction: column-reverse;
   flex: 0 0 100%;
