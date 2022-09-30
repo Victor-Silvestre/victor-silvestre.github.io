@@ -2,28 +2,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Victor Silvestre</title>
 
 <link href="css/stylesheet.css" type="text/css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<script src="js/scripts.js"></script>
+
 </head>
 
 <body>
 
-  <div class="sidenav">
-  <img src="img/Victor-photo.png" alt="Profile-picture">
-  <div class="contact-details">
-  	<h1>Victor Silvestre Brotons</h1>
-	  <p>Project Portfolio</p>
-  	<p>victor.silveste@outlook.com</p>
+  <div id="sidenav">
+    <img src="img/Victor-photo.png" alt="Profile-picture">
+    <div class="contact-details">
+  	   <h1>Victor Silvestre Brotons</h1>
+	      <p>Project Portfolio</p>
+  	     <p>victor.silveste@outlook.com</p>
+       </div>
+       <div class="menu">
+         <button onclick="hideSideNav()">Ver proyectos</button>
+         <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/victor-silvestre-brotons-1784b7128/"><i class="fa fa-linkedin-square"></i>   Linkedin</a>
+         <a target="_blank" rel="noopener noreferrer" href="Victor-Silvestre-Brotons-CV2022-English.pdf"><i class="fa fa-external-link" aria-hidden="true"></i> CV English</a>
+       </div>
   </div>
 
-  <div class="menu">
-  <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/victor-silvestre-brotons-1784b7128/"><i class="fa fa-linkedin-square"></i>   Linkedin</a>
-  <a target="_blank" rel="noopener noreferrer" href="Victor-Silvestre-Brotons-CV2022-English.pdf"><i class="fa fa-external-link" aria-hidden="true"></i> CV English</a>
-  </div>
+  <div id="topnav">
+    <img src="img/Victor-photo.png" alt="Profile-picture">
+    <button onclick="showSideNav()">Ver perfil</button>
   </div>
 
 <!--<div class="icon-scroll-container">
