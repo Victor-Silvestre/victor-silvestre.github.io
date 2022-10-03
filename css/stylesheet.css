@@ -10,7 +10,7 @@
 body {
 	height: 100vh;
 	margin: 0;
-	background-color: #dadada;
+	background-color: #eee;
 }
 
 h1 {
@@ -39,6 +39,7 @@ a{
   overflow-x: hidden;
   padding-top: 70px;
   box-shadow: 0 5px 15px 0px rgba(0,0,0,0.4);
+	transition: 0.8s;
 }
 
 #sidenav button {
@@ -79,11 +80,13 @@ a{
 }
 
 #sidenav.hidden {
-  display: none;
+  opacity: 0;
+	transition: 0.8s;
+	transform: translateY(-900px);
 }
 
 #topnav {
-	display: none;
+	opacity: 0;
 	height: 10%;
   width:100%;
   position: fixed;
@@ -94,6 +97,7 @@ a{
   overflow-x: hidden;
   padding-top: 70px;
 	box-shadow: 0 5px 15px 0px rgb(0 0 0 / 40%);
+	transition: 0.5s;
 }
 
 #topnav button {
@@ -239,7 +243,6 @@ a{
 	float: right;
 	width: 77%;
 	padding: 50px 0 70px 0;
-	background-color: #dadada;
 }
 
 .main h2 {
@@ -296,8 +299,7 @@ a{
     display: block;
     float: right;
     width: 100%;
-    padding: 80px 0 70px 0;
-    background-color: #dadada;
+    padding: 90px 0 70px 0;
 }
 }
 
@@ -320,7 +322,7 @@ a{
   position: relative;
   width: 100%;
   height: 100%;
-  text-align: center;
+  text-align: left;
   transition: 0.8s;
   transform-style: preserve-3d;
   border-radius: 20px;
@@ -337,7 +339,6 @@ a{
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden;
   border-radius: 20px;
   box-shadow: 0px 6px 10px 0 rgba(0,0,0,0.4);
 }
@@ -346,32 +347,38 @@ a{
 }
 
 .flip-card-back {
-  background-color: #046380;
+  background-color: #046380ef;
   color: white;
+	backface-visibility: hidden;
   transform: rotateY(180deg);
   padding: 20px;
 }
 
 .flip-card-back p {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 }
 
 .flip-card-back button {
-	position: absolute;
-	right: 0;
-	bottom: 0;
-  	background-color: #F3F5F4;
-  	border: none;
-  	color: #046380;
-  	padding: 12px 28px;
-  	text-align: center;
-  	text-decoration: none;
-  	display: inline-block;
-  	font-size: 16px;
-	font-weight: 800;
-	width: 100%;
-	border-radius: 0px 0px 20px 20px;
-	transition-duration: 0.4s;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    border: none;
+    color: #046380;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 800;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    transition-duration: 0.4s;
+}
+
+.flip-card-back a:nth-of-type(2) button {
+    left: 60px;
+}
+
+.flip-card-back a:nth-of-type(3) button {
+    left: 120px;
 }
 
 .flip-card-back button:hover {
