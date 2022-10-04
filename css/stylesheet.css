@@ -37,7 +37,7 @@ a{
   left: 0;
   background-color: rgba(4, 99, 128, 0.9);
   overflow-x: hidden;
-  padding-top: 70px;
+  padding-top: 50px;
   box-shadow: 0 5px 15px 0px rgba(0,0,0,0.4);
 	transition: 0.8s;
 }
@@ -162,6 +162,13 @@ a{
 	margin: 0 auto;
 	transform: translatey(0px);
     animation: float 5s ease-in-out infinite;
+}
+
+@media screen and (max-width: 1020px){
+	#sidenav img {
+		width: 125px;
+		height: 125px;
+	}
 }
 
 @keyframes float {
