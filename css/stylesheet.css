@@ -8,9 +8,11 @@
 }
 
 body {
-	height: 100vh;
+	/* height: 100vh; */
 	margin: 0;
 	background-color: #eee;
+	display: flex;
+	align-items: stretch;
 }
 
 h1 {
@@ -28,18 +30,17 @@ a{
 /*MENU*/
 
 #sidenav {
-  display: block;
-  height: 100%;
-  width: 280px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
+  width: 300px;
+  padding: 15px;
   background-color: rgba(4, 99, 128, 0.9);
-  overflow-x: hidden;
   padding-top: 50px;
   box-shadow: 0 5px 15px 0px rgba(0,0,0,0.4);
-	transition: 0.8s;
+  transition: 0.8s;
+}
+
+#sidenav p {
+	font-size: 80%;
+	padding: 0px 20px;
 }
 
 #sidenav button {
@@ -59,6 +60,12 @@ a{
 	background-color: #F5D111;
 }
 
+.sticky-content {
+    flex: 1;
+    position: sticky;
+    top: 70px;
+}
+
 @media screen and (max-width: 1020px){
 
 	#sidenav button {
@@ -76,6 +83,10 @@ a{
 
 #sidenav {
   width: 100%;
+  position: fixed;
+  z-index: 1;
+  height: 100vh;
+	padding: 0;
 }
 }
 
@@ -87,7 +98,7 @@ a{
 
 #topnav {
 	opacity: 0;
-	height: 10%;
+	height: 70px;
   width:100%;
   position: fixed;
   z-index: 1;
@@ -246,29 +257,20 @@ a{
 /*MAIN*/
 
 .main {
-	display: block;
-	float: right;
-	width: 77%;
-	padding: 50px 0 70px 0;
-}
-
-.main h2 {
-	display: block;
-	background-image: linear-gradient(to bottom, #046380 95%, #F38B0F 5%);
-	color: #F4F2F4;
-	font-size: 2rem;
-	font-weight: bolder;
-	font-variant: small-caps;
-	margin: 4rem 0;
-	padding: 20px;
-	border-radius: 20px 0 0 20px;
+	width: fit-content;
+	margin: auto;
+	padding: 50px 5% 70px 5%;
+	transition: 0.8s;
 }
 
 .grid-container {
-  display: grid;
-  grid-gap: 50px;
-  grid-template-columns: auto auto auto;
-  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 50px;
+  justify-content: space-evenly;
+  transition: 0.8s;
+	margin: 4.5rem 0 6rem;
 }
 
 .grid-container > div {
@@ -277,7 +279,7 @@ a{
   display: flex;
   align-items: center;
   justify-content: center;
-
+  transition: 0.8s;
 }
 
 @media screen and (max-width: 1320px){
@@ -285,28 +287,33 @@ a{
   display: grid;
   grid-gap: 50px;
   margin: auto;
-  width: 80%;
+  /* width: 80%; */
   grid-template-columns: auto auto;
-  padding: 10px;
+  /* padding: 10px; */
 }
 }
 
 @media screen and (max-width: 1020px){
 	.grid-container {
-    display: grid;
+    display: flex;
     grid-gap: 20px;
-    float: unset;
-    margin-right: unset;
-    grid-template-columns: auto;
-    padding: 10px;
+    /* float: unset; */
+    /* margin-right: unset; */
+    /* grid-template-columns: auto; */
+    /* padding: 10px; */
     justify-items: center;
-    width: unset;
-	}
+    /* width: unset; */
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-direction: row;
+ }
 	.main {
-    display: block;
-    float: right;
+    display: flex;
+    /* float: right; */
     width: 100%;
-    padding: 90px 0 70px 0;
+    padding: 100px 15px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 }
 
