@@ -172,7 +172,6 @@ a{
 	border-radius: 150px;
 	margin: 0 auto;
 	transform: translatey(0px);
-    animation: float 5s ease-in-out infinite;
 }
 
 @media screen and (max-width: 1020px){
