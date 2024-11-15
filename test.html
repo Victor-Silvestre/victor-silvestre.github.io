@@ -128,6 +128,84 @@
     color: #00796b;
   }
 
+  /* General Section Styling */
+  #story {
+      padding: 50px 20px;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .timeline {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+  }
+
+  /* Line Styling */
+  .line {
+      position: absolute;
+      left: 50px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: #ccc;
+  }
+
+  /* Year Circle Styling */
+  .year-circle {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      background-color: #007BFF;
+      color: white;
+      font-size: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      margin-bottom: 50px;
+      margin-left: 25px; /* Align with line */
+  }
+
+  /* Event Content Styling */
+  .event {
+      display: flex;
+      align-items: center;
+      margin-bottom: 50px;
+  }
+
+  .event-content {
+      background: white;
+      padding: 15px 20px;
+      margin-left: 80px; /* Space from the timeline */
+      width: calc(100% - 100px); /* Ensure responsiveness */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+      .line {
+          left: 20px;
+      }
+      .event-content {
+          margin-left: 60px;
+          width: calc(100% - 80px);
+      }
+  }
+
+
+
+
+
+
+
+
+
+
+
 </style>
 <body class="w3-light-grey w3-content" style="max-width:1920px">
 
@@ -139,7 +217,7 @@
     </a>
     <img src="img/Victor-photo.png" style="width:45%;" class="w3-round"><br><br>
     <h4><b>Víctor Silvestre</b></h4>
-    <p class="w3-text-grey">Wordpress websites</p>
+    <p class="w3-text-grey">Wordpress websites & Business Digital Solutions</p>
   </div>
   <div class="w3-bar-block">
     <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a>
@@ -159,27 +237,58 @@
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
+<div style="position:absolute; top:0; width:100vw"><a href="#" ><img src="img/Victor-photo.png" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+<span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+</div>
+
+
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px">
 
   <header class="w3-container w3-center" style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
       <div>
           <h1 style="font-size: 3rem; margin-bottom: 1rem;">Hello! I'm Victor,</h1>
-          <p style="font-size: 1.5rem; margin-bottom: 2rem;">Web designer & marketing strategist</p>
+          <p style="font-size: 1.5rem; margin-bottom: 2rem;">Wordpress websites & Business Digital Solutions</p>
           <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; margin-bottom: 2rem;">
-              I consider myself a creative and proactive person, passionate about UI/UX design and marketing. I specialize in the study of user behaviors and experiences, offering comprehensive advice on digital presence, especially for small businesses.
+              I consider myself a creative and proactive person, passionate about UI/UX design, brand communication, and business flow. I specialize in the study of user behaviors and experiences, offering comprehensive advice on digital presence, especially for small businesses.
           </p>
+          <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem;">
+            <div class="logo"><img src="img/logo/wordpress.png" alt="Wordpress" style="width: 100px; height: 100px; object-fit: contain;"></div>
+            <div class="logo"><img src="img/logo/woocommerce.png" alt="Woocommerce" style="width: 100px; height: 100px; object-fit: contain;"></div>
+            <div class="logo"><img src="img/logo/elementor.png" alt="Elementor" style="width: 100px; height: 100px; object-fit: contain;"></div>
+            <div class="logo"><img src="img/logo/flatsome.png" alt="Flatsome" style="width: 100px; height: 100px; object-fit: contain;"></div>
+          </div>
+
           <a href="#contact" class="w3-button w3-large w3-green" style="font-size: 1.2rem; padding: 1rem 2rem;">Need a hand?</a>
       </div>
   </header>
 
+  <section id="story">
+    <div class="timeline">
+        <div class="line"></div>
+        <div class="event">
+            <div class="year-circle">2008</div>
+            <div class="event-content">
+              <p>I grow up inside a small family-owned photography studio. I help as asistant photographer in different events and get used to work with Adobe Photoshop and video editing very early. By the age of 16, I create for fun some videos and artworks for the local team that I support. One of my artworks get's printed for a tifo, and they play some of my videos to the team in the play-offs. I'm not sure about the actual effect that it had, but the team got promoted so that's a fair KPI.</p>
+              <p>Meanwhile at home my grandma keeps touching the remote buttons and changing the settings of the TV. Somehow I become the "guy to go" for these kind of things that nobody really wants to mess about. Something that stays true to this day. I figure out the problems navigating menus in Czechoslovak and get things running. I guess those make my firsts IT experiences.</p>
+            </div>
+        </div>
+        <div class="event">
+            <div class="year-circle">2022</div>
+            <div class="event-content">
+                <p>This year marked a major turning point in my career as I fully embraced web design and business solutions.</p>
+            </div>
+        </div>
+        <div class="event">
+            <div class="year-circle">2023</div>
+            <div class="event-content">
+                <p>Currently, I specialize in providing digital solutions to small businesses, focusing on UI/UX design and brand communication.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-
-
-  <!-- Header -->
   <section id="portfolio">
-    <a href="#"><img src="img/Victor-photo.png" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
-    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
     <div class="w3-container">
     <h1><b>My Portfolio</b></h1>
     <div class="w3-section w3-bottombar w3-padding-16">
@@ -410,6 +519,7 @@ function filterSelection(category) {
     elements[i].style.display = elements[i].className.indexOf(category) > -1 ? 'block' : 'none';
   }
 }
+
 </script>
 
 </body>
