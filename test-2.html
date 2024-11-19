@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Silvestre - Wordpress Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+    /* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: #007BFF;
+}
+
+/* Disable text selection while dragging */
+.no-select {
+    user-select: none;
+    -webkit-user-select: none; /* For Safari */
+    -ms-user-select: none; /* For older IE */
+}
+
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to right, #007bff, #0056b3); /* Gradiente similar al hero */
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px 20px; /* Reducir padding para dar más aire */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.header.active {
+    transform: translateY(0);
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaciado entre imagen y texto */
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.header h1 {
+    font-size: 1.4rem; /* Tamaño reducido para evitar saturación */
+    margin: 0;
+    font-weight: 600;
+    color: #fff;
+}
+
+.header .nav {
+    display: flex;
+    gap: 15px; /* Espaciado entre enlaces */
+}
+
+.header .nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem; /* Tamaño ajustado para mejor proporción */
+    padding: 5px 10px; /* Espaciado interno para mejorar clicabilidad */
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.header .nav a:hover {
+    color: #ffcc00; /* Color de acento */
+    background: rgba(255, 255, 255, 0.1); /* Fondo sutil en hover */
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .header {
+        padding: 10px 15px; /* Reducir padding en móviles */
+    }
+
+    .header h1 {
+        font-size: 1.2rem;
+    }
+
+    .profile-pic {
+        width: 35px;
+        height: 35px;
+    }
+
+    .header .nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        flex-direction: column;
+        background: linear-gradient(to right, #007bff, #0056b3);
+        padding: 15px;
+        gap: 10px;
+        width: 200px;
+        border-radius: 5px; /* Bordes redondeados para mejor estética */
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .header .nav a {
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .header .nav.active {
+        transform: translateX(0);
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+
+
+
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #007BFF, #00A6FF);
+    color: #fff;
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Container for the hero content */
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hero Content */
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    margin: 50px 0 100px;
+}
+
+/* Image styling */
+.hero-image {
+    position: relative;
+}
+
+.hero-image img {
+    width: 180px; /* Adjusted size */
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Social Media Icons */
+.social-media-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Reduced gap for better alignment */
+    margin-top: 20px;
+}
+
+.social-media-icons a {
+    color: #fff;
+    font-size: 1.8rem; /* Slightly reduced size */
+    transition: color 0.3s ease;
+}
+
+.social-media-icons a:hover {
+    color: #00A6FF; /* Accent color on hover */
+}
+
+/* Graphics behind the image */
+.graphics {
+    position: absolute;
+    top: -50px; /* Adjusted position */
+    left: -80px; /* Adjusted position */
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: rotate(45deg);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* Hero Text Styling */
+.hero-text {
+    max-width: 600px;
+    text-align: left;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.tagline {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.intro {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    color: #dcdcdc;
+}
+
+.hero .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #fff;
+    color: #007BFF;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.hero .btn:hover {
+    background: #e0e0e0;
+    color: #0056b3;
+}
+
+/* Responsive Image Size (Larger on Desktop) */
+@media (min-width: 768px) {
+    .hero-image img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .graphics {
+        width: 350px;
+        height: 350px;
+        left: -100px;
+        top: -60px;
+    }
+}
+
+/* Timeline Section */
+.timeline {
+    padding: 50px 20px;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.timeline h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #007BFF;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+}
+
+.timeline-container {
+    position: relative;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Spacing between items */
+}
+
+.timeline-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #007BFF;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-left: -7px;
+}
+
+.timeline-content {
+    padding: 5px 20px 20px 20px;
+    flex: 1;
+}
+
+.timeline-content h3 {
+    font-size: 1.8rem;
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Connecting line */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 50px;
+    width: 2px;
+    height: 97%;
+    background: #007BFF;
+    z-index: 0;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .timeline-container::before {
+        left: 25px;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 15px 10px;
+    }
+
+    .timeline-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        margin-left: -27px;
+    }
+
+    .timeline-content {
+        padding: 0px 0px 15px 15px;
+        margin-top: -54px;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.5rem;
+        margin-left: 20px;
+    }
+
+    .timeline-content p {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* Portfolio Section */
+.portfolio {
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+    height: 90vh; /* Shorter container height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Scrollable container */
+.portfolio-container {
+    width: 100%;
+    height: calc(80vh - 60px); /* Adjust for shorter container */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    align-items: center;
+    justify-content: center;
+    cursor: grab; /* Show grabbing cursor when hovering over */
+    scroll-snap-type: x mandatory; /* Snap scroll on horizontal scroll */
+    padding-bottom: 2em;
+}
+
+/* Scrollbar styles */
+.portfolio-container::-webkit-scrollbar {
+    height: 4px; /* Set the height of the scrollbar */
+}
+
+.portfolio-container::-webkit-scrollbar-thumb {
+    background-color: #007bff; /* Thumb color */
+    border-radius: 4px;
+}
+
+.portfolio-container::-webkit-scrollbar-track {
+    background-color: #eee; /* Track color */
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr); /* Fixed 2 rows */
+    grid-auto-flow: column; /* Horizontal flow */
+    grid-auto-columns: 20%; /* 5 columns visible in desktop view */
+    gap: 0;
+    height: 100%; /* Full height of the container */
+    width: max-content; /* Adapt width based on content */
+    align-items: center;
+    justify-items: center;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .portfolio-grid {
+        gap: 0;
+    }
+}
+
+/* Flip card */
+.flip-card {
+    background-color: transparent;
+    width: 280px;
+    height: 280px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.6s ease-in-out;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg); /* Smooth flip without scaling */
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.flip-card-front img {
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.flip-card-back {
+    background-color: #046380ef;
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.flip-card-back .text-box {
+  padding: 1em;
+}
+
+.flip-card-back p {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.flip-card-back button {
+    border: none;
+    color: #046380;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 8px 12px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.flip-card-back button:hover {
+    background-color: #F5D111;
+    color: #046380;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.flip-card-back button:active {
+    background-color: #EFECCA;
+    color: #046380;
+}
+
+button:focus {
+    outline: 0 !important;
+}
+
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer .socials a {
+    margin: 0 10px;
+    color: #fff;
+    font-weight: bold;
+}
+
+footer .socials a:hover {
+    color: #00A6FF;
+}
+</style>
+</head>
+<body>
+
+  <header class="header">
+  <div class="container">
+    <div class="header-logo">
+      <img src="img/Victor-photo.png" alt="Víctor Silvestre" class="profile-pic" />
+      <h1>Víctor Silvestre</h1>
+    </div>
+    <button class="hamburger" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav">
+      <a href="#timeline">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+
+
+
+    <!-- Section 1: Presentation -->
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-image">
+            <img src="img/Victor-photo.png" alt="Victor Silvestre">
+             <div class="graphics"></div> <!-- Optional Graphics -->
+            <div class="social-media-icons">
+              <a href="https://facebook.com" target="_blank">
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a href="https://twitter.com" target="_blank">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank">
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+          <div class="hero-text">
+            <h1>Hello! I'm Victor,</h1>
+            <p class="tagline">WordPress Websites & Business Digital Solutions</p>
+            <p class="intro">
+              I consider myself a creative and proactive person, passionate about UI/UX design, brand communication, and business flow. I specialize in the study of user behaviors and experiences, offering comprehensive advice on digital presence, especially for small businesses.
+            </p>
+            <a href="#contact" class="btn">Get in Touch</a>
+            <a href="#timeline" class="btn">About Me</a>
+          </div>
+        </div>
+        <div class="graphics"></div>
+      </div>
+    </section>
+
+    <!-- Section 2: Timeline -->
+    <section class="timeline" id="timeline">
+        <h2>My Journey</h2>
+        <div class="timeline-container">
+            <div class="timeline-items">
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-camera"></i></div>
+                    <div class="timeline-content">
+                        <h3>2008</h3>
+                        <p>I grew up in a small, family-owned photography studio, helping out as an assistant photographer and getting hands-on experience with Adobe Photoshop and video editing early on. By 16, I was creating videos and artwork for my local team, one of which got printed for a tifo, and they played some of my videos during the play-offs. Not sure if it had much impact, but hey, the team got promoted, so I’ll call it a win.</p>
+                        <p>At home, my grandma was always messing with the TV remote, so I became the go-to person for fixing whatever she broke. Navigating Czechoslovak menus and getting things running probably marked my first dive into IT.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-cogs"></i></div>
+                    <div class="timeline-content">
+                        <h3>2011-2015</h3>
+                        <p>As I study Advertising & Public Relations in university, I apply the gained knowledge to the family business. I work on the corporate image, create a new website or boost alliances with other companies.</p>
+                        <p>I take the graduation photographies that my parents had been doing for my class during my school years to a whole new level. I create a network to reach all possible schools, high schools and university degrees. I create batch automations to fine tune the pictures taken and templates with Adobe Indesign to have good results in little time.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-globe"></i></div>
+                    <div class="timeline-content">
+                        <h3>2016</h3>
+                        <p>I finish my career doing Erasmus in Southampton, UK. My scholarship arrives 5 months later than expected. I survive on savings of the graduation photography project, working in a local theme park as a ride operator, playing semi pro football and doing some video editing and graphic design gigs for people that I met there. I consolidate my English knowledge and learn to be comfortable by being uncomfortable.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-heart"></i></div>
+                    <div class="timeline-content">
+                        <h3>2017-2019</h3>
+                        <p>Love takes me to Italy. There I start working in a technologic start up that produces large format printers. My role says "product technician". My bosses call me "SuperVictor".</p>
+                        <p>"SuperVictor" does user interfaces for all the products, file optimization for large format printing, color management, web design, collateral, product manuals, video maintenance support, interactive design for display screens and graphics for trade fairs. It comes available in 4 languages and can perform product demonstrations and staff training in the destination where the product is installed.</p>
+                        <p>My supervisor is a Software Developer. From him, I learn to think as one, and I start to become familiar with coding.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-users"></i></div>
+                    <div class="timeline-content">
+                        <h3>2020-2021</h3>
+                        <p>In Barcelona, I help a friend to start up a business about goalkeeper gloves. I create the brand and the website based on Wordpress and Woocommerce. The business grows up quick, adapting to new demands and expanding to international markets. The digital infrastructure established holds up so well that it becomes a model to apply to other entrepeneurships.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div class="timeline-content">
+                        <h3>2022</h3>
+                        <p>I work for a digital marketing agency in the center of Barcelona. I get the chance to work in tens of different projects, most of them in Wordpress environments but also some Shopify stores. The drill is: I get the designs from a very talented graphic designer, I implement them, and present it to the clients.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="timeline-content">
+                        <h3>2023-2025</h3>
+                        <p>Freelance time! I am putting all the skills I’ve learned over the years to the service of the most interesting entrepreneurships and businesses. From designing WordPress websites to crafting custom digital solutions, I focus on helping small businesses and startups establish or enhance their online presence.</p>
+                        <p>My approach combines creativity, functionality, and business strategy. I collaborate closely with my clients to ensure their brands not only look great but also operate efficiently and align with their goals. Whether it’s building robust e-commerce platforms, optimizing user experiences, or providing ongoing advice, I strive to be a reliable partner in their growth journey.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Section 3: Portfolio -->
+    <section class="portfolio no-select" id="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-container">
+            <div class="portfolio-grid">
+                <!-- Example portfolio items -->
+                <div class="flip-card">
+                   <div class="flip-card-inner">
+
+                  <div class="flip-card-front">
+                    <img src="img/akro-tile.jpg" alt="Akro website">
+                  </div>
+
+                  <div class="flip-card-back">
+                    <div class="text-box">
+                      <h1>akro.bike</h1>
+                      <p><strong>Wordpress</strong> and <strong>Woocommece</strong> based website, designed with <strong>Flatsome</strong>,UX Blocks and custom code.</p>
+                      <p>It features information about Akro brand and b2c shop in multiple languages, aimed for European markets.</p>
+                      <a target="_blank" rel="noopener noreferrer" href="https://akro.bike"><button>GO</button></a>
+                    </div>
+                  </div>
+
+                  </div>
+                </div>
+                <div class="flip-card">
+                   <div class="flip-card-inner">
+
+                  <div class="flip-card-front">
+                    <img src="img/akro-tile.jpg" alt="Akro website">
+                  </div>
+
+                  <div class="flip-card-back">
+                    <h1>akro.bike</h1>
+                    <p><strong>Wordpress</strong> and <strong>Woocommece</strong> based website, designed with <strong>Flatsome</strong>,UX Blocks and custom code.</p>
+                    <p>It features information about Akro brand and b2c shop in multiple languages, aimed for European markets.</p>
+
+                    <a target="_blank" rel="noopener noreferrer" href="https://akro.bike"><button>GO</button></a>
+                  </div>
+
+                  </div>
+                </div>
+
+                  <div class="flip-card">
+                   <div class="flip-card-inner">
+
+                  <div class="flip-card-front">
+                    <img src="img/akrovalis-tile.jpg" alt="Akrovalis website">
+                  </div>
+
+                  <div class="flip-card-back">
+                    <h1>akrovalis.com</h1>
+                    <p><strong>Wordpress</strong> and <strong>Woocommece</strong> based website, designed with <strong>Elementor</strong></p>
+                    <p>It features different landing pages in multiple languages about the brands distributed by Akrovalis company, as well as the Akrovalis corporative information.</p>
+                    <p>It also features a b2b internal shop with custom conditions according to distributor category.</p>
+
+                    <a target="_blank" rel="noopener noreferrer" href="https://akrovalis.com"><button>GO</button></a>
+                  </div>
+
+                  </div>
+                </div>
+
+                <div class="flip-card">
+                 <div class="flip-card-inner">
+
+                  <div class="flip-card-front">
+                    <img src="img/tannus-tile.jpg" alt="Tannus website">
+                  </div>
+
+                  <div class="flip-card-back">
+                    <h1>tannustires.com</h1>
+
+                    <p><strong>Wordpress</strong> and <strong>Woocommerce</strong> based website built on Flatsome theme. It is designed with <strong>UX blocks</strong>.</p>
+                    <p>It features information about Tannus brand and b2c shop in multiple languages, aimed for European markets.</p>
+
+                    <a target="_blank" rel="noopener noreferrer" href="https://tannustires.com"><button>GO</button></a>
+                  </div>
+
+                  </div>
+                </div>
+
+                <div class="flip-card">
+                 <div class="flip-card-inner">
+
+                  <div class="flip-card-front">
+                    <img src="img/outbraker-tile.jpg" alt="Outbraker website">
+                  </div>
+
+                  <div class="flip-card-back">
+                    <h1>outbraker.eu</h1>
+
+                    <p><strong>Wordpress</strong> and <strong>Woocommerce</strong> based website built on Flatsome theme. It is designed with UX blocks.</p>
+                    <p>It features information about Outbraker brand and b2c shop  in multiple languages, aimed for European markets.</p>
+
+                    <a target="_blank" rel="noopener noreferrer" href="https://outbraker.eu"><button>GO</button></a>
+                  </div>
+
+                  </div>
+                </div>
+
+                  <div class="flip-card">
+                   <div class="flip-card-inner">
+
+                   <div class="flip-card-front">
+                     <img src="img/pitviper-tile.jpg" alt="Pit Viper Spain website">
+                   </div>
+
+                   <div class="flip-card-back">
+                     <h1>pitviper.eu</h1>
+
+                     <p><strong>Shopify</strong> based website aimed to the Spanish market.</p>
+
+                     <a target="_blank" rel="noopener noreferrer" href="https://pitviper.eu"><button>GO</button></a>
+                   </div>
+
+                   </div>
+                 </div>
+
+                	<div class="flip-card">
+                	 <div class="flip-card-inner">
+
+                	 <div class="flip-card-front">
+                		 <img src="img/TwoFive-website-tile.jpg" alt="Two Five website">
+                	 </div>
+
+                	 <div class="flip-card-back">
+                		 <h1>TwoFive Project</h1>
+                		 <p>I <strong>designed this brand</strong> dedicated to the production and distribution of football goalkeeper gloves.</p>
+                     <p>It began from scratch in 2019. By the time I moved on, we had built a <strong>digital infrastructure</strong> ready to support about 1 million € in yearly revenue and thousands of visitors from numerous international markets.</p>
+                		 <!--<p>I've been entirely focused on this project lately. As for October 2022, <strong>Wordpress</strong> powers all the websites, which include an e-commerce section based on <strong>Woocommerce</strong>.</p>-->
+                		 <a target="_blank" rel="noopener noreferrer" href="https://twofivegloves.com"><button>GO</button></a>
+                	 </div>
+
+                	 </div>
+                 </div>
+
+                 <div class="flip-card">
+                  <div class="flip-card-inner">
+
+                  <div class="flip-card-front">
+                    <img src="img/twofiveaustralia-tile.jpg" alt="Two Five Australia">
+                  </div>
+
+                  <div class="flip-card-back">
+                    <h1>TwoFive Australia</h1>
+                    <p>Landing of the TwoFive project dedicated to the Australian market</p>
+                    <a target="_blank" rel="noopener noreferrer" href="https://au.twofivegloves.com"><button>GO</button></a>
+                  </div>
+
+                  </div>
+                 </div>
+
+                 <div class="flip-card">
+                  <div class="flip-card-inner">
+
+                  <div class="flip-card-front">
+                    <img src="img/serportero-tile.jpg" alt="Serportero Shop website">
+                  </div>
+
+                  <div class="flip-card-back">
+                    <h1>Serportero Shop</h1>
+
+                    <p><strong>Wordpress</strong> and <strong>Woocommerce</strong> based website built on Flatsome theme. Designed with UX blocks.</p>
+
+                    <a target="_blank" rel="noopener noreferrer" href="https://serportero-shop.com"><button>GO</button></a>
+                  </div>
+
+                  </div>
+                 </div>
+
+                 <div class="flip-card">
+                   <div class="flip-card-inner">
+
+                   <div class="flip-card-front">
+                     <img src="img/NoeCha-website2020-tile.jpg" alt="NoeCha 2020 website">
+                   </div>
+
+                   <div class="flip-card-back">
+                     <h1>NoeCha Srl website (2020)</h1>
+                     <p>Created using <strong>HTML5, CSS3 and Javascript</strong>, it aimed to replace the previous NoeCha website.</p>
+                     <p>The project was left unfinished, but what was done (60% progress I would say) is accesible here.</p>
+                     <a target="_blank" rel="noopener noreferrer" href="noecha2020site/index.html"><button>GO</button></a>
+                   </div>
+
+                   </div>
+                 </div>
+
+                 <div class="flip-card">
+                  <div class="flip-card-inner">
+
+                  <div class="flip-card-front">
+                    <img src="img/NoeCha-website-tile.jpg" alt="NoeCha website">
+                  </div>
+
+                  <div class="flip-card-back">
+                    <h1>NoeCha Srl website</h1>
+                    <p>Website designed for an industrial printer manufacturer to which I worked also as all-purpose designer, prepress specialist, technical assistance and product demonstrator.</p>
+                    <p>I worked alone on this website, making use of the resources avalaible.</p>
+                    <p>Created with deprecated Adobe Muse.</p>
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.noecha.com"><button>GO</button></a>
+                  </div>
+
+                  </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Victor Silvestre. All Rights Reserved.</p>
+        <div class="socials">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">Email</a>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const header = document.querySelector(".header");
+      const heroHeight = document.querySelector(".hero").offsetHeight;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > heroHeight - 50) { // Se mostrará 50px antes del fin del hero
+          header.classList.add("active");
+        } else {
+          header.classList.remove("active");
+        }
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const nav = document.querySelector(".nav");
+
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+});
+
+const portfolioContainer = document.querySelector('.portfolio-container');
+
+// Variables to track the mouse position
+let isMouseDown = false;
+let startX;
+let scrollLeft;
+
+portfolioContainer.addEventListener('mousedown', (e) => {
+    isMouseDown = true;
+    startX = e.pageX - portfolioContainer.offsetLeft;
+    scrollLeft = portfolioContainer.scrollLeft;
+    portfolioContainer.style.cursor = 'grabbing'; // Change cursor to grabbing
+});
+
+portfolioContainer.addEventListener('mouseleave', () => {
+    isMouseDown = false;
+    portfolioContainer.style.cursor = 'grab'; // Change cursor back to grab
+});
+
+portfolioContainer.addEventListener('mouseup', () => {
+    isMouseDown = false;
+    portfolioContainer.style.cursor = 'grab'; // Change cursor back to grab
+});
+
+portfolioContainer.addEventListener('mousemove', (e) => {
+    if (!isMouseDown) return;
+    e.preventDefault();
+    const x = e.pageX - portfolioContainer.offsetLeft;
+    const walk = (x - startX) * 3; // Scroll sensitivity
+    portfolioContainer.scrollLeft = scrollLeft - walk;
+});
+
+
+
+</script>
+
+</body>
+</html>
