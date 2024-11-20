@@ -29,11 +29,11 @@ h1, h2, h3 {
 }
 
 h2 {
-   font-size: 2.5rem;
+   font-size: 2em;
    margin-bottom: 40px;
    color: #007BFF;
-   font-weight: bold;
-   text-align: center;
+   font-weight: 300;
+   text-align: left;
    position: relative;
 }
 
@@ -436,15 +436,19 @@ a:hover {
 
 
 /* Portfolio Section */
+.pre-portfolio {
+    padding: 0 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
 .portfolio {
-    padding: 20px;
-    text-align: center;
     height: 90vh; /* Shorter container height */
     min-height: 680px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    padding: 0 20px;
 }
 
 /* Scrollable container */
@@ -480,27 +484,28 @@ a:hover {
     grid-template-rows: repeat(2, 1fr); /* Fixed 2 rows */
     grid-auto-flow: column; /* Horizontal flow */
     grid-auto-columns: 20%; /* 5 columns visible in desktop view */
-    gap: 0;
+    gap: 3vw;
     height: 100%; /* Full height of the container */
     width: max-content; /* Adapt width based on content */
     align-items: center;
     justify-items: center;
 }
 
-/* Responsive Styling */
-@media (max-width: 768px) {
-    .portfolio-grid {
-        gap: 0;
-    }
-}
-
 /* Flip card */
 .flip-card {
     background-color: transparent;
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 300px;
     perspective: 1000px;
-    margin-bottom: 2em;
+}
+
+@media (max-width: 768px) {
+  .flip-card {
+      background-color: transparent;
+      width: 280px;
+      height: 280px;
+      perspective: 1000px;
+  }
 }
 
 .flip-card-inner {
@@ -516,14 +521,12 @@ a:hover {
     transform: rotateY(180deg); /* Smooth flip without scaling */
 }
 
-.flip-card-front,
-.flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 20px;
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  box-shadow: 0px 6px 10px 0 rgba(0,0,0,0.4);
 }
 
 .flip-card-front img {
@@ -534,13 +537,14 @@ a:hover {
 }
 
 .flip-card-back {
-    background-color: #046380ef;
-    color: white;
-    transform: rotateY(180deg);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+  background: linear-gradient(135deg, #007bffde, #00a6ffde);
+  color: white;
+	backface-visibility: hidden;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .flip-card-back .text-box {
@@ -724,29 +728,11 @@ footer .socials a:hover {
 
 
     <!-- Section 3: Portfolio -->
+    <div class="pre-portfolio"><h2>My Projects</h2></div>
     <section class="portfolio no-select" id="portfolio">
-        <h2>Portfolio</h2>
         <div class="portfolio-container">
             <div class="portfolio-grid">
                 <!-- Example portfolio items -->
-                <div class="flip-card">
-                   <div class="flip-card-inner">
-
-                  <div class="flip-card-front">
-                    <img src="img/akro-tile.jpg" alt="Akro website">
-                  </div>
-
-                  <div class="flip-card-back">
-                    <div class="text-box">
-                      <h1>akro.bike</h1>
-                      <p><strong>Wordpress</strong> and <strong>Woocommece</strong> based website, designed with <strong>Flatsome</strong>,UX Blocks and custom code.</p>
-                      <p>It features information about Akro brand and b2c shop in multiple languages, aimed for European markets.</p>
-                      <a target="_blank" rel="noopener noreferrer" href="https://akro.bike"><button>GO</button></a>
-                    </div>
-                  </div>
-
-                  </div>
-                </div>
                 <div class="flip-card">
                    <div class="flip-card-inner">
 
