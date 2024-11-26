@@ -489,7 +489,9 @@ a:hover {
     width: max-content; /* Adapt width based on content */
     align-items: center;
     justify-items: center;
+    transition: transform 0.3s ease; /* Smooth transition for panning */
 }
+
 
 /* Flip card */
 .flip-card {
@@ -766,8 +768,8 @@ footer .socials a:hover {
                 <div class="text-box">
                   <h1>akrovalis.com</h1>
                   <p><strong>Wordpress</strong> and <strong>Woocommece</strong> based website, designed with <strong>Elementor</strong></p>
-                  <p>It features different landing pages in multiple languages about the brands distributed by Akrovalis company, as well as the Akrovalis corporative information.</p>
-                  <p>It also features a b2b internal shop with custom conditions according to distributor category.</p>
+                  <p>The site includes landing pages in multiple languages for Akrovalis brands and corporate info.</p>
+                  <p>It also has a B2B shop with custom conditions based on distributor category.</p>
                   <a target="_blank" rel="noopener noreferrer" href="https://akrovalis.com"><button>GO</button></a>
                 </div>
               </div>
@@ -840,9 +842,9 @@ footer .socials a:hover {
 
             	 <div class="flip-card-back">
                  <div class="text-box">
-            		    <h1>TwoFive Project</h1>
-            		    <p>I <strong>designed this brand</strong> dedicated to the production and distribution of football goalkeeper gloves.</p>
-                    <p>It began from scratch in 2019. By the time I moved on, we had built a <strong>digital infrastructure</strong> ready to support about 1 million € in yearly revenue and thousands of visitors from numerous international markets.</p>
+            		    <h1>twofivegloves.com</h1>
+            		    <p>I played a key role in creating a brand focused on football goalkeeper gloves.</p>
+                    <p>Since 2019, we built a strong digital infrastructure that supported substantial revenue growth and attracted international visitors across various markets.</p>
             		    <a target="_blank" rel="noopener noreferrer" href="https://twofivegloves.com"><button>GO</button></a>
                   </div>
             	 </div>
@@ -859,7 +861,7 @@ footer .socials a:hover {
 
               <div class="flip-card-back">
                 <div class="text-box">
-                  <h1>TwoFive Australia</h1>
+                  <h1>au.twofivegloves.com</h1>
                   <p>Landing of the TwoFive project dedicated to the Australian market</p>
                   <a target="_blank" rel="noopener noreferrer" href="https://au.twofivegloves.com"><button>GO</button></a>
                 </div>
@@ -877,8 +879,8 @@ footer .socials a:hover {
 
               <div class="flip-card-back">
                 <div class="text-box">
-                  <h1>Serportero Shop</h1>
-                  <p><strong>Wordpress</strong> and <strong>Woocommerce</strong> based website built on Flatsome theme. Designed with UX blocks.</p>
+                  <h1>serportero-shop.com</h1>
+                  <p><strong>Wordpress</strong> and <strong>Woocommerce</strong> based website built on Flatsome theme.</p>
                   <a target="_blank" rel="noopener noreferrer" href="https://serportero-shop.com"><button>GO</button></a>
                 </div>
               </div>
@@ -1519,6 +1521,83 @@ portfolioContainer.addEventListener('mousemove', (e) => {
     const walk = (x - startX) * 3; // Scroll sensitivity
     portfolioContainer.scrollLeft = scrollLeft - walk;
 });
+
+
+
+
+
+const container = document.querySelector('.portfolio-container');
+const MAX_SCROLL_SPEED = 10;  // Maximum scroll speed
+const EDGE_SENSITIVITY = 0.2;  // 20% of the container width near the edges for scrolling
+
+let scrollInterval;  // Store the interval ID
+let lastMouseX = 0;  // Store the last mouse position
+
+// Listen for mousemove event
+container.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX - container.offsetLeft;  // Mouse position relative to the container
+    const containerWidth = container.offsetWidth;  // Container width
+    const leftEdge = containerWidth * EDGE_SENSITIVITY;  // Left edge (20% of container width)
+    const rightEdge = containerWidth * (1 - EDGE_SENSITIVITY);  // Right edge (80% of container width)
+
+    let scrollSpeed = 0;  // Reset scroll speed
+
+    // If the mouse is near the left edge
+    if (mouseX < leftEdge) {
+        const distanceToEdge = leftEdge - mouseX;  // Distance to the left edge
+        scrollSpeed = Math.min(MAX_SCROLL_SPEED, MAX_SCROLL_SPEED * (distanceToEdge / leftEdge));  // Calculate speed based on proximity to edge
+        startScrolling('right', scrollSpeed);  // Scroll right if near the left edge
+    }
+    // If the mouse is near the right edge
+    else if (mouseX > rightEdge) {
+        const distanceToEdge = mouseX - rightEdge;  // Distance to the right edge
+        scrollSpeed = Math.min(MAX_SCROLL_SPEED, MAX_SCROLL_SPEED * (distanceToEdge / (containerWidth - rightEdge)));  // Calculate speed based on proximity to edge
+        startScrolling('left', scrollSpeed);  // Scroll left if near the right edge
+    }
+    // Stop scrolling when the mouse is not near any edge
+    else {
+        stopScrolling();
+    }
+
+    // Update the last mouse position to continue smooth scrolling
+    lastMouseX = mouseX;
+});
+
+// Start continuous scrolling in a given direction with dynamic speed
+function startScrolling(direction, speed) {
+    // Clear any existing scroll interval to avoid multiple intervals running
+    clearInterval(scrollInterval);
+
+    const scrollDirection = direction === 'left' ? 1 : -1; // Scroll left or right
+    scrollInterval = setInterval(() => {
+        // Smoothly scroll by incrementing/decrementing the position
+        container.scrollLeft += speed * scrollDirection;
+    }, 10);  // Higher refresh rate (higher FPS)
+}
+
+// Stop scrolling
+function stopScrolling() {
+    clearInterval(scrollInterval);  // Stop the interval when mouse is not near an edge
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
