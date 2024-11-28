@@ -379,6 +379,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     gap: 30px; /* Spacing between items */
+    z-index: 1;
 }
 
 .timeline-item {
@@ -403,11 +404,13 @@ a:hover {
     flex-shrink: 0;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin-left: -7px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .timeline-content {
     padding: 5px 20px 20px 20px;
     flex: 1;
+    overflow: hidden;
 }
 
 .timeline-content h3 {
@@ -420,16 +423,55 @@ a:hover {
     font-size: 1rem;
     color: #666;
     line-height: 1.6;
+    margin-top: 0;
 }
 
 .timeline-content p span.highlight {
     font-size: 1.2rem;
     color: #007BFF;
-    line-height: 1.6;
-    font-weight: 600;
+    line-height: 1.4;
 }
 
-/* Connecting line */
+/* The hidden content is initially collapsed */
+.timeline-content .hidden-content {
+    display: block; /* Keep the content block-level */
+    height: 0; /* Start with no height */
+    opacity: 0; /* Start fully transparent */
+    overflow: hidden; /* Prevent overflowing content */
+    transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth transitions */
+}
+
+/* When the content is revealed, expand it and make it visible */
+.timeline-content .hidden-content.show {
+    height: auto; /* Let the content expand to its natural height */
+    opacity: 1; /* Make the content visible */
+}
+
+/* Button style */
+.timeline-content .read-more-btn {
+    display: block;
+    padding: 10px 20px;
+    background: #fff;
+    color: #007BFF;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out; /* Smooth transition for the button itself */
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px; /* Adds space between text and button */
+    margin-bottom: 10px;
+    border: 1pt solid;
+}
+
+/* Hover effect for the button */
+.timeline-content .read-more-btn:hover {
+    color: #0056b3;
+    background: #F5D111;
+    text-decoration: none; /* Optional: remove underline on hover */
+}
+
+/* Connecting line - using transform for smoother transition */
 .timeline-container::before {
     content: '';
     position: absolute;
@@ -439,6 +481,13 @@ a:hover {
     height: 97%;
     background: #007BFF;
     z-index: 0;
+    transform: translateX(0); /* Start with no translation */
+    transition: transform 0.5s ease-in-out; /* Add smooth transform transition */
+}
+
+/* When the content is expanded, move the line smoothly */
+.timeline-item .hidden-content.show ~ .timeline-container::before {
+    transform: translateX(20px); /* Smoothly shift the line to the right */
 }
 
 /* Mobile Adjustments */
@@ -475,13 +524,6 @@ a:hover {
         font-size: 0.9rem;
     }
 }
-
-
-
-
-
-
-
 
 
 /* Portfolio Section */
@@ -723,10 +765,10 @@ footer .socials a:hover {
 
   <header class="header">
   <div class="header-container">
-    <div class="header-logo">
+    <a href="#hero"><div class="header-logo">
       <img src="img/Victor-photo.png" alt="Víctor Silvestre" class="profile-pic" />
       <h1>Víctor Silvestre</h1>
-    </div>
+    </div></a>
     <button class="hamburger" aria-label="Toggle navigation">
       <span></span>
       <span></span>
@@ -744,7 +786,7 @@ footer .socials a:hover {
 
     <!-- Section 1: Presentation -->
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
       <div class="container">
         <div class="hero-content">
           <div class="hero-image">
@@ -782,32 +824,31 @@ footer .socials a:hover {
                     <div class="timeline-icon"><i class="fas fa-camera"></i></div>
                     <div class="timeline-content">
                         <h3>2008</h3>
-                        <p><span class="highlight">I grew up in a small, family-owned photography studio</span>, helping out as an assistant photographer and getting hands-on experience with <b>Adobe Photoshop</b> and video editing early on. By 16, I was creating videos and artwork for the football local team that I supported, one of which got printed for a tifo, and they played some of my videos during the play-offs. Not sure if it had much impact, but hey, the team got promoted, so I’ll call it a win.</p>
-                        <p>At home, my grandma was always messing with the TV remote, so I became the go-to person for fixing whatever she broke. Navigating Czechoslovak menus and getting things running probably marked my first dive into IT.</p>
+                        <p><span class="highlight">I grew up in a small, family-owned photography studio</span>.</p><button class="read-more-btn">Read More</button><div class="hidden-content"><p>Helping out as an assistant photographer and getting hands-on experience with <b>Adobe Photoshop</b> and video editing was my first work experience. By 15, I was creating videos and artwork for the football local team that I supported, one  of which got printed for a tifo, and they played some of my videos to the team during the play-offs. Not sure if it had much impact, but hey, the team got promoted, so I’ll call it a win.</p><p>At home, my grandma was always messing with the TV remote, so I became the go-to person for fixing whatever she broke. Navigating Czechoslovak menus and getting things running probably marked my first dive into IT.</p></div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-icon"><i class="fas fa-cogs"></i></div>
                     <div class="timeline-content">
                         <h3>2011-2015</h3>
-                        <p>As <span class="highlight">I study Advertising & Public Relations in university, I apply the gained knowledge to the family business</span>. I work on the <b>corporate image</b>, <b>create a new website</b> or <b>boost alliances with other companies</b>.</p>
-                        <p>I take the graduation photographies that my parents had been doing for my class during my school years to a whole new level. I <b>create a commercial network</b> to reach all possible schools, high schools and university degrees. I create <b>batch automations</b> to fine tune the pictures taken and templates with <b>Adobe Indesign</b> to have good results in little time.</p>
+                        <p>As <span class="highlight">I <b>study Advertising & Public Relations in university</b>, I apply the gained knowledge to the family business</span>. I work on the <b>corporate image</b>, <b>create a new website</b> or <b>boost alliances with other companies</b>.</p>
+                        <button class="read-more-btn">Read More</button><div class="hidden-content"><p>I took the graduation photography services that my parents had been offering for my school class to a whole new level. I <b>created a commercial network</b> to reach schools, high schools, and universities in my region, and developed <b>batch automations</b> to fine-tune the pictures. I also used <b>Adobe InDesign</b> to create efficient templates, ensuring high-quality results in less time.</p></div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-icon"><i class="fas fa-globe"></i></div>
                     <div class="timeline-content">
                         <h3>2016</h3>
-                        <p><span class="highlight">I finished my university degree by doing Erasmus in Southampton, UK</span>. My scholarship arrived 5 months later than expected, so I survived on savings from my graduation photography project, working in a local theme park as a ride operator, playing semi-pro football, and doing video editing and graphic design gigs for people I met there. <b>I strengthened my English fluency</b> and learned the art of being comfortable with discomfort.</p>
+                        <p><span class="highlight">I finished my university degree by doing <b>Erasmus in Southampton, UK</b></span>.</p><button class="read-more-btn">Read More</button><div class="hidden-content"><p>My scholarship arrived 5 months later than expected, so I survived on savings from my graduation photography project, working in a local theme park as a ride operator, playing semi-pro football, and doing video editing and graphic design gigs for people I met there. <b>I strengthened my English fluency</b> and learned the art of being comfortable with discomfort.</p></div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-icon"><i class="fas fa-heart"></i></div>
                     <div class="timeline-content">
                         <h3>2017-2019</h3>
-                        <p><span class="highlight">Love takes me to Italy. There I start working in a technologic start up</span> that produces large format printers. My role says "<b>product technician</b>." My bosses call me "<b>SuperVictor</b>."</p>
-                        <p>"SuperVictor" does <b>user interfaces</b> for all the products, file optimization for large format printing, color management, <b>web design</b>, collateral, product manuals, video maintenance support, <b>interactive design for display screens</b>, and graphics for trade fairs. He is available in <b>four languages</b> and can perform <b>product demonstrations</b> and staff training in the destination where the product is installed.</p>
-                        <p><span class="highlight">My supervisor is a very talented Software Developer. From him, I learn to think as one, and I start to become familiar with coding</span>.</p>
+                        <p><span class="highlight"><b>Love takes me to Italy. There I start working in a technologic start up</b></span> that produces large format printers. My role says "<b>product technician</b>." My bosses call me "<b>SuperVictor</b>."</p>
+                        <button class="read-more-btn">Read More</button><div class="hidden-content"><p>"SuperVictor" does <b>user interfaces</b> for all the products, file optimization for large format printing, color management, <b>web design</b>, collateral, product manuals, video maintenance support, <b>interactive design for display screens</b>, and graphics for trade fairs. He is available in <b>four languages</b> and can perform <b>product demonstrations</b> and staff training in the destination where the product is installed.</p></div>
+                        <p><span class="highlight">My supervisor is a very talented Software Developer. From him, I learn to think as one, and <b>I start to become familiar with coding</b></span>.</p>
 
                     </div>
                 </div>
@@ -815,14 +856,14 @@ footer .socials a:hover {
                     <div class="timeline-icon"><i class="fas fa-users"></i></div>
                     <div class="timeline-content">
                         <h3>2020-2021</h3>
-                        <p><span class="highlight">In Barcelona, I help a friend to start up a business about goalkeeper gloves. I create the brand and the website based on <b>Wordpress and Woocommerce</b>.</span> The business grows up quick, adapting to new demands and expanding to international markets. The digital infrastructure established holds up so well that it becomes a model to apply to other entrepeneurships.</p>
+                        <p><span class="highlight">In Barcelona, <b>I help a friend to start up a business</b>. I create the brand and the website based on <b>Wordpress and Woocommerce</b>.</span></p><button class="read-more-btn">Read More</button><div class="hidden-content"><p>The business is about goalkeeper gloves (goalkeeping is part of my life!) and it grows up quick, adapting to new demands and expanding to international markets. The digital infrastructure established holds up so well that it becomes a model to apply to other entrepeneurships.</p></div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-icon"><i class="fas fa-laptop-code"></i></div>
                     <div class="timeline-content">
                         <h3>2022</h3>
-                        <p><span class="highlight">I work for a <b>digital marketing agency</b> in the center of Barcelona. I get the chance to work in tens of different projects</span>, most of them in <b>Wordpress environments</b> but also some <b>Shopify</b> stores. The drill is: I get the designs from a very talented graphic designer, I implement them, and <b>present the finished digital project to the clients</b>.</p>
+                        <p><span class="highlight"><b>I work in a digital marketing agency as a front-end developer</b>. I get the chance to work in tens of different projects</span>.</p><button class="read-more-btn">Read More</button><div class="hidden-content"><p>Most of them in <b>Wordpress environments</b> but also some <b>Shopify</b> stores. The drill is: I get the designs from a very talented graphic designer, I implement them, and <b>present the finished digital project to the clients</b>.</p></div>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -830,7 +871,7 @@ footer .socials a:hover {
                     <div class="timeline-content">
                         <h3>2023-2025</h3>
                         <p><span class="highlight">Freelance time! I am putting all the skills I’ve learned over the years to the service of the most interesting entrepreneurships and businesses. From designing WordPress websites to crafting custom digital solutions, <b>I focus on helping small businesses and startups establish or enhance their online presence</b>.</span></p>
-                        <p><b>My approach combines creativity, functionality, and business strategy. I collaborate closely with my clients to ensure their brands not only look great but also operate efficiently and align with their goals. Whether it’s building robust e-commerce platforms, optimizing user experiences, or providing ongoing advice, I strive to be a reliable partner in their growth journey.</b></p>
+                        <p style="font-size: 1.2rem;">My approach combines creativity, functionality, and business strategy. I collaborate closely with my clients to ensure their brands not only look great but also operate efficiently and align with their goals. Whether it’s building robust e-commerce platforms, optimizing user experiences, or providing ongoing advice, I strive to be a reliable partner in their growth journey.</p>
                     </div>
                 </div>
             </div>
@@ -855,7 +896,16 @@ footer .socials a:hover {
 <section class="portfolio no-select">
     <div class="portfolio-container">
         <div class="portfolio-grid">
-            <!-- Example portfolio items -->
+
+          <div class="flip-card">
+
+            <div class="flip-card-front" style="box-shadow: none;">
+              <h1 style="color: #007bff;font-size: 3em; line-height: 1; padding: .35em .15em; margin-top: 60px;">WEB PROJECTS</h1>
+              <div class="arrow" style="top:74%; width:40px; height: 40px;"><i class="fas fa-arrow-right"></i> <!-- Font Awesome right arrow icon --></div>
+            </div>
+
+          </div>
+
             <div class="flip-card">
                <div class="flip-card-inner">
 
@@ -1228,6 +1278,15 @@ footer .socials a:hover {
               </div>
 
               </div>
+             </div>
+
+             <div class="flip-card">
+
+               <div class="flip-card-front" style="box-shadow: none;">
+                 <h1 style="color: #007bff;font-size: 3em; line-height: 1; padding: .35em .15em; margin-top: 60px;">OTHER WORK</h1>
+                 <div class="arrow" style="top:74%; width:40px; height: 40px;"><i class="fas fa-arrow-right"></i> <!-- Font Awesome right arrow icon --></div>
+               </div>
+
              </div>
 
              <div class="flip-card">
@@ -1716,6 +1775,18 @@ document.querySelectorAll('a[href="#portfolio"]').forEach((button) => {
     });
 });
 
+
+document.querySelectorAll('.read-more-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        const hiddenContent = this.nextElementSibling; // Get the next sibling element, which is the .hidden-content
+
+        // Add the 'show' class to make the content visible
+        hiddenContent.classList.add('show');
+
+        // Remove the button after it is clicked
+        this.remove();
+    });
+});
 
 
 </script>
