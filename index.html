@@ -763,6 +763,31 @@ footer .socials a {
 footer .socials a:hover {
     color: #00A6FF;
 }
+
+.socials {
+        margin-bottom: 15px;
+    }
+
+    .funding {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        background: white; /* White background */
+        padding: 10px;
+    }
+
+    .funding-logo {
+        height: 50px; /* Keeps both images at the same height */
+        width: auto; /* Maintains original proportions */
+    }
+
+    .funding-text {
+        text-align: center;
+        font-size: 14px;
+        padding: 10px;
+    }
+
 </style>
 </head>
 <body>
@@ -1628,13 +1653,26 @@ footer .socials a:hover {
               </section>
 
               <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Victor Silvestre. All Rights Reserved.</p>
-        <div class="socials">
-            <a href="href="https://www.linkedin.com/in/victor-silvestre-brotons/>LinkedIn</a>
-            <a href="href="mailto:victor.silvestre@outlook.com?subject=Hello%20Victor!%20I'd%20love%20to%20connect&body=Hi%20Victor%2C%0A%0AI%20hope%20you're%20doing%20well.%20I%20wanted%20to%20reach%20out%20because%20[write%20your%20message%20here].%0A%0ALooking%20forward%20to%20hearing%20from%20you!%0A%0ABest%20regards%2C%0A[Your%20Name]"">Email</a>
-        </div>
-    </footer>
+              <footer>
+                  <p>&copy; 2025 Victor Silvestre. All Rights Reserved.</p>
+
+                  <div class="socials">
+                      <a href="https://www.linkedin.com/in/victor-silvestre-brotons/">LinkedIn</a>
+                      <a href="mailto:victor.silvestre@outlook.com?subject=Hello%20Victor!%20I'd%20love%20to%20connect&body=Hi%20Victor%2C%0A%0AI%20hope%20you're%20doing%20well.%20I%20wanted%20to%20reach%20out%20because%20[write%20your%20message%20here].%0A%0ALooking%20forward%20to%20hearing%20from%20you!%0A%0ABest%20regards%2C%0A[Your%20Name]">
+                          Email
+                      </a>
+                  </div>
+
+                  <div class="funding">
+                      <img src="img/logo/cofinancat-per-la-UE.jpg" alt="Cofinançat per la UE" class="funding-logo">
+                      <img src="img/logo/Next-Generation-Generalitat.png" alt="Next Generation + Generalitat" class="funding-logo">
+                  </div>
+
+                  <p class="funding-text">
+                      Aquesta actuació està impulsada i subvencionada pel Servei Públic d’Ocupació
+                      de Catalunya (SOC) i cofinançada pel Fons Social Europeu Plus.
+                  </p>
+              </footer>
 
     <script>
     document.addEventListener("DOMContentLoaded", () => {
