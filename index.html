@@ -286,6 +286,7 @@ a:hover {
     justify-content: center;
     gap: 20px; /* Reduced gap for better alignment */
     margin-top: 20px;
+	align-items: center;
 }
 
 .social-media-icons a {
@@ -367,6 +368,151 @@ a:hover {
         top: -60px;
     }
 }
+
+/* What Can I Do For You Section */
+.what-can-i-do {
+  max-width: 1100px;
+  margin: 60px auto 100px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.what-can-i-do-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.what-can-i-do-header h2 {
+  font-size: 2.4rem;
+  color: #007BFF;
+  font-weight: 400;
+  margin: 0;
+  text-align: left;
+}
+
+.what-can-i-do-header p {
+  font-size: 1.15rem;
+  color: #444;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.services-cards-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.service-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px 25px;
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.15);
+  flex: 1 1 210px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.3s ease;
+}
+
+.service-card .icon {
+  font-size: 2.2rem;
+  color: #007BFF;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+
+.service-card:hover {
+  transform: translateY(-7px);
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  color: #007BFF;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.service-card p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+/* Contact Button */
+.service-card .contact-btn {
+  align-self: stretch;
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.service-card .contact-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Adjustments */
+
+/* Tablets and small desktops */
+@media (max-width: 1024px) {
+  .services-cards-container {
+    justify-content: center;
+  }
+  .service-card {
+    flex: 1 1 45%;
+    max-width: 45%;
+  }
+}
+
+/* Tablets and large phones (2 cards per row) */
+@media (max-width: 768px) {
+  .what-can-i-do-header h2 {
+    font-size: 2rem;
+  }
+  .what-can-i-do-header p {
+    max-width: 100%;
+  }
+  .services-cards-container {
+    justify-content: flex-start;
+    gap: 15px;
+  }
+  .service-card {
+    flex: 1 1 calc(50% - 15px);
+    max-width: calc(50% - 15px);
+    padding: 20px 18px;
+  }
+}
+
+/* Small mobile (1 card per row) */
+@media (max-width: 480px) {
+  .service-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  .service-card .contact-btn {
+    font-size: 0.95rem;
+  }
+}
+
+
+
 
 /* Timeline Section */
 .timeline {
@@ -879,6 +1025,7 @@ footer .socials a:hover {
     </button>
     <nav class="nav">
       <a href="#portfolio">Portfolio</a>
+	  <a href="#services">Services</a>
       <a href="#timeline">My Journey</a>
     </nav>
   </div>
@@ -896,12 +1043,16 @@ footer .socials a:hover {
             <img src="img/Victor-photo.png" alt="Victor Silvestre">
              <div class="graphics"></div> <!-- Optional Graphics -->
             <div class="social-media-icons">
+				<h3>Contact me</h3>
               <a href="https://www.linkedin.com/in/victor-silvestre-brotons-1784b7128/" target="_blank">
                 <i class="fab fa-linkedin"></i>
               </a>
               <a href="mailto:victor.silvestre@outlook.com?subject=Hello%20Victor!%20I'd%20love%20to%20connect&body=Hi%20Victor%2C%0A%0AI%20hope%20you're%20doing%20well.%20I%20wanted%20to%20reach%20out%20because%20[write%20your%20message%20here].%0A%0ALooking%20forward%20to%20hearing%20from%20you!%0A%0ABest%20regards%2C%0A[Your%20Name]">
-                <i class="fas fa-envelope"></i><span style="font-size:0.8em;"> Contact me</span>
+                <i class="fas fa-envelope"></i>
               </a>
+			  <a href="https://wa.me/34622237871" target="_blank" rel="noopener noreferrer">
+				<i class="fab fa-whatsapp"></i>
+				</a>
             </div>
           </div>
           <div class="hero-text">
@@ -912,6 +1063,7 @@ footer .socials a:hover {
               I specialize in the study of user behaviors and experiences, offering comprehensive advice and solutions on digital presence, especially for small businesses.
             </p>
             <a href="#portfolio" class="btn">Porfolio</a>
+			<a href="#services" class="btn">Services</a>
             <a href="#timeline" class="btn">My Journey</a>
           </div>
         </div>
@@ -1685,8 +1837,50 @@ footer .socials a:hover {
   </div>
                 </div>
               </section>
+			  
+			  
+			  <!-- Section: Services -->
+<section class="what-can-i-do" id="services">
+  <div class="what-can-i-do-header">
+    <h2>Services</h2>
+    <p>Here’s a quick overview of my main services. Crafted to help your business thrive online.</p>
+  </div>
 
-              <!-- Section 2: Timeline -->
+  <div class="services-cards-container">
+    <article class="service-card">
+  <i class="icon fa-solid fa-code"></i>
+  <h3>WordPress Development</h3>
+  <p>Custom themes, plugins, and maintenance tailored for your business needs.</p>
+  <a href="#hero" class="contact-btn">Contact me</a>
+</article>
+
+<article class="service-card">
+  <i class="icon fa-solid fa-cart-shopping"></i>
+  <h3>WooCommerce Store Setup</h3>
+  <p>Get your online store ready to sell, with optimized design and payment solutions.</p>
+  <a href="#hero" class="contact-btn">Contact me</a>
+</article>
+
+<article class="service-card">
+  <i class="icon fa-solid fa-chart-line"></i>
+  <h3>SEO & Performance</h3>
+  <p>Boost your search rankings and improve site speed to attract and keep visitors.</p>
+  <a href="#hero" class="contact-btn">Contact me</a>
+</article>
+
+<article class="service-card">
+  <i class="icon fa-solid fa-lightbulb"></i>
+  <h3>Consulting & Strategy</h3>
+  <p>Personalized advice to scale your digital presence and maximize ROI.</p>
+  <a href="#hero" class="contact-btn">Contact me</a>
+</article>
+
+  </div>
+</section>
+
+
+
+              <!-- Section: Timeline -->
               <section class="timeline" id="timeline">
                   <h2>My Journey</h2>
                   <div class="timeline-container">
@@ -1898,6 +2092,21 @@ if (!isTouchDevice) {
 
 
 document.querySelectorAll('a[href="#portfolio"]').forEach((button) => {
+    button.addEventListener('click', function (e) {
+        e.preventDefault(); // Prevent default anchor behavior
+
+        const targetElement = document.querySelector(this.getAttribute('href')); // Get the target element
+
+        if (targetElement) {
+            const headerOffset = 100; // Adjust this value to match your header's height
+            const offsetPosition = targetElement.offsetTop - headerOffset;
+
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+    });
+});
+
+document.querySelectorAll('a[href="#services"]').forEach((button) => {
     button.addEventListener('click', function (e) {
         e.preventDefault(); // Prevent default anchor behavior
 
