@@ -619,6 +619,55 @@ a:hover {
   }
 }
 
+.portfolio-container {
+  position: relative; /* Make sure container is relative for absolute children */
+  overflow-x: auto; /* keep scroll */
+}
+
+/* Semicircle overlay on the right */
+.scroll-indicator {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 7vw; /* Adjust width of semicircle */
+  height: 100%;
+  background-color: rgba(0, 123, 255, 0.9); /* Transparent #007BFF */
+  border-top-left-radius: 37px;
+  border-bottom-left-radius: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
+  opacity: 1; /* visible by default */
+  z-index: 10;
+}
+
+/* Right arrow inside semicircle */
+.scroll-indicator i {
+  color: white;
+  font-size: 2vw;
+  animation: flashArrow 1s infinite alternate;
+}
+
+/* Flashing animation */
+@keyframes flashArrow {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Hide semicircle on touch devices */
+@media (pointer: coarse) {
+  .scroll-indicator {
+    display: none;
+  }
+}
+
 
 
 
@@ -1630,6 +1679,10 @@ footer .socials a:hover {
                     </div>
 
                   </div>
+				   <!-- Semicircle overlay -->
+  <div class="scroll-indicator">
+    <i class="fas fa-arrow-right"></i>
+  </div>
                 </div>
               </section>
 
@@ -1871,6 +1924,39 @@ document.querySelectorAll('.read-more-btn').forEach(button => {
         this.remove();
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const portfolioContainer = document.querySelector('.portfolio-container');
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+
+  if (!portfolioContainer || !scrollIndicator) return;
+
+  // Show indicator initially only if scrollLeft is zero and scrollable
+  function updateIndicatorVisibility() {
+    if (portfolioContainer.scrollLeft > 0) {
+      scrollIndicator.style.opacity = '0';
+      scrollIndicator.style.pointerEvents = 'none';
+    } else {
+      scrollIndicator.style.opacity = '1';
+      scrollIndicator.style.pointerEvents = 'auto';
+    }
+  }
+
+  // On scroll, update semicircle visibility
+  portfolioContainer.addEventListener('scroll', updateIndicatorVisibility);
+
+  // Initial check
+  updateIndicatorVisibility();
+
+  // Optional: If you want clicking the semicircle to scroll right smoothly
+  scrollIndicator.addEventListener('click', () => {
+    portfolioContainer.scrollBy({
+      left: portfolioContainer.offsetWidth * 0.5,
+      behavior: 'smooth'
+    });
+  });
+});
+
 
 
 </script>
