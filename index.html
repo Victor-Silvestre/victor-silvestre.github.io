@@ -450,6 +450,26 @@ a:hover {
 }
 
 /* Contact Button */
+.contact-btn {
+  align-self: stretch;
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.contact-btn:hover {
+  color: white;
+  background-color: #ffcc00;
+}
+
 .service-card .contact-btn {
   align-self: stretch;
   padding: 10px 15px;
@@ -466,7 +486,7 @@ a:hover {
 }
 
 .service-card .contact-btn:hover {
-  background-color: #0056b3;
+  background-color: #ffcc00;
 }
 
 /* Responsive Adjustments */
@@ -966,6 +986,184 @@ button:focus {
     outline: 0 !important;
 }
 
+.flip-card-front .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 110, 253, 0.2),
+    rgba(0, 0, 0, 0.5)
+  );
+  backdrop-filter: blur(3px);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.flip-card-front .project-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.8em;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.flip-card-front .tags,
+.flip-card-front .status-container {
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+
+.flip-card-front .tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.65rem; /* Smaller */
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.flip-card-front .tag:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Status tag */
+/* ACTIVE */
+.flip-card-front .tag.status.active {
+  background: linear-gradient(135deg, #ffffff, #f2f2f2);
+  color: #28a745;
+  font-weight: 700;
+}
+
+.flip-card-front .tag.status.active .dot {
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #28a745, #34d058);
+  border-radius: 50%;
+  margin-right: 6px;
+  animation: pulse 1.5s infinite;
+  flex-shrink: 0;
+}
+
+/* LIVE */
+.flip-card-front .tag.status.live {
+  background: linear-gradient(135deg, #e6f0fb, #cce1f7);
+  color: #1b6ec2;
+  font-weight: 700;
+}
+
+.flip-card-front .tag.status.live .dot {
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #28a745, #34d058);
+  border-radius: 50%;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+/* ARCHIVED */
+.flip-card-front .tag.status.archived {
+  background: linear-gradient(135deg, #f2f2f2, #e0e0e0);
+  color: #666666;
+  font-weight: 700;
+}
+
+.flip-card-front .tag.status.archived .dot {
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #999999, #777777);
+  border-radius: 50%;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+/* Pulse animation for active only */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+/* Specific tag colors */
+.flip-card-front .tag.wordpress {
+  background-image: linear-gradient(to right, #3498db, #21759b);
+  color: #fff;
+}
+
+.flip-card-front .tag.elementor {
+  background-image: linear-gradient(to right, #e63961, #d61c4e);
+  color: #fff;
+}
+
+.flip-card-front .tag.flatsome {
+  background-image: linear-gradient(to right, #5b7aa7, #446084);
+  color: #fff;
+}
+
+.flip-card-front .tag.shopify {
+  background-image: linear-gradient(to right, #a5d948, #89C129);
+  color: #fff;
+}
+
+.flip-card-front .tag.bootstrap {
+  background-image: linear-gradient(to right, #712cf9, rgba(113, 44, 249, 0.95));
+  color: #fff;
+}
+
+.flip-card-front .tag.b2b {
+  background-image: linear-gradient(to right, #0d6efd, #0b5ed7);
+  color: #fff;
+}
+
+.flip-card-front .tag.b2c {
+  background-image: linear-gradient(to right, #fd7e14, #e9690e);
+  color: #fff;
+}
+
+.flip-card-front .tag.woocommerce {
+  background-image: linear-gradient(to right, #a46998, #96588a);
+  color: #fff;
+}
+
+.flip-card-front .tag.muse {
+  background-image: linear-gradient(to right, #512DA8, #26175A);
+  color: #fff;
+}
+
+.flip-card-front .tag.webstack {
+  background-image: linear-gradient(to right, #e44d26, #f7df1e);
+  color: #333;
+}
+
+
 
 /* Footer */
 footer {
@@ -1095,13 +1293,63 @@ footer .socials a:hover {
             </div>
 
           </div>
-		  
+
+
+          <div class="flip-card">
+  <div class="flip-card-inner">
+
+    <!-- FRONT -->
+    <div class="flip-card-front available-card">
+      <div class="overlay">
+        <h2 class="project-name">SLOT AVAILABLE</h2>
+        <span class="tag status active">
+          <span class="dot"></span> Let’s Collaborate
+        </span>
+        <p class="available-description">
+          Your project could be here.
+        </p>
+      </div>
+    </div>
+
+    <!-- BACK -->
+    <div class="flip-card-back available-back">
+      <div class="text-box">
+        <h1>Work With Me!</h1>
+        <p style="font-size: 105%;">Looking for help with your next project?<br>
+          Let’s bring your vision to life.</p>
+        <a target="_blank" rel="noopener noreferrer" href="mailto:youremail@domain.com">
+          <button style="font-size: 105%;">Contact Me</button>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 		  <div class="flip-card">
                <div class="flip-card-inner">
 
-              <div class="flip-card-front">
-                <img src="img/desterxnupik-tile.webp" alt="Dester x Nupik website">
-              </div>
+                 <div class="flip-card-front">
+                   <img src="img/desterxnupik-tile.webp" alt="Dester x Nupik website">
+                   <div class="overlay">
+                     <h2 class="project-name">DESTER X NUPIK</h2>
+                     <div class="status-container">
+                       <div class="status-container">
+                         <span class="tag status active">
+                           <span class="dot"></span> active
+                         </span>
+                       </div>
+                     <div class="tags">
+                       <span class="tag wordpress">WordPress</span>
+                       <span class="tag elementor">Elementor</span>
+                       <span class="tag woocommerce">Woocommerce</span>
+                       <span class="tag b2b">B2B</span>
+                       <span class="tag b2c">B2C</span>
+                     </div>
+                   </div>
+                 </div>
+               </div>
 
               <div class="flip-card-back">
                 <div class="text-box">
@@ -1115,11 +1363,64 @@ footer .socials a:hover {
               </div>
             </div>
 
+
+            <div class="flip-card">
+             <div class="flip-card-inner">
+
+              <div class="flip-card-front">
+                <img src="img/tannus-tile.jpg" alt="Tannus website">
+                <div class="overlay">
+                  <h2 class="project-name">TANNUS EUROPE</h2>
+                  <div class="status-container">
+                    <div class="status-container">
+                      <span class="tag status active">
+                        <span class="dot"></span> active
+                      </span>
+                    </div>
+                  <div class="tags">
+                    <span class="tag wordpress">WordPress</span>
+                    <span class="tag flatsome">Flatsome</span>
+                    <span class="tag woocommerce">Woocommerce</span>
+                    <span class="tag b2c">B2C</span>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+              <div class="flip-card-back">
+                <div class="text-box">
+                  <h1>tannustires.com</h1>
+                  <p><strong>Wordpress</strong> and <strong>Woocommerce</strong> based website built on Flatsome theme. It is designed with <strong>UX blocks</strong>.</p>
+                  <p>It features information about Tannus brand and b2c shop in multiple languages, aimed for European markets.</p>
+                  <a target="_blank" rel="noopener noreferrer" href="https://tannustires.com"><button>GO</button></a>
+                </div>
+              </div>
+
+              </div>
+            </div>
+
+
             <div class="flip-card">
                <div class="flip-card-inner">
 
               <div class="flip-card-front">
                 <img src="img/akro-tile.jpg" alt="Akro website">
+                <div class="overlay">
+                  <h2 class="project-name">AKRO BIKE</h2>
+                  <div class="status-container">
+                    <div class="status-container">
+                      <span class="tag status active">
+                        <span class="dot"></span> active
+                      </span>
+                    </div>
+                  <div class="tags">
+                    <span class="tag wordpress">WordPress</span>
+                    <span class="tag flatsome">Flatsome</span>
+                    <span class="tag woocommerce">Woocommerce</span>
+                    <span class="tag b2c">B2C</span>
+                  </div>
+                </div>
+              </div>
               </div>
 
               <div class="flip-card-back">
@@ -1134,11 +1435,28 @@ footer .socials a:hover {
               </div>
             </div>
 
+
               <div class="flip-card">
                <div class="flip-card-inner">
 
               <div class="flip-card-front">
                 <img src="img/akrovalis-tile.jpg" alt="Akrovalis website">
+                <div class="overlay">
+                  <h2 class="project-name">AKROVALIS</h2>
+                  <div class="status-container">
+                    <div class="status-container">
+                      <span class="tag status active">
+                        <span class="dot"></span> active
+                      </span>
+                    </div>
+                  <div class="tags">
+                    <span class="tag wordpress">WordPress</span>
+                    <span class="tag elementor">Elementor</span>
+                    <span class="tag woocommerce">Woocommerce</span>
+                    <span class="tag b2c">B2B</span>
+                  </div>
+                </div>
+              </div>
               </div>
 
               <div class="flip-card-back">
@@ -1154,30 +1472,61 @@ footer .socials a:hover {
               </div>
             </div>
 
+
             <div class="flip-card">
              <div class="flip-card-inner">
 
-              <div class="flip-card-front">
-                <img src="img/tannus-tile.jpg" alt="Tannus website">
+             <div class="flip-card-front">
+               <img src="img/pitviper-tile.jpg" alt="Pit Viper Spain website">
+               <div class="overlay">
+                 <h2 class="project-name">PIT VIPER SPAIN</h2>
+                 <div class="status-container">
+                   <div class="status-container">
+                     <span class="tag status active">
+                       <span class="dot"></span> active
+                     </span>
+                   </div>
+                 <div class="tags">
+                   <span class="tag shopify">Shopify</span>
+                   <span class="tag b2c">B2C</span>
+                 </div>
+               </div>
               </div>
+             </div>
 
-              <div class="flip-card-back">
-                <div class="text-box">
-                  <h1>tannustires.com</h1>
-                  <p><strong>Wordpress</strong> and <strong>Woocommerce</strong> based website built on Flatsome theme. It is designed with <strong>UX blocks</strong>.</p>
-                  <p>It features information about Tannus brand and b2c shop in multiple languages, aimed for European markets.</p>
-                  <a target="_blank" rel="noopener noreferrer" href="https://tannustires.com"><button>GO</button></a>
-                </div>
+             <div class="flip-card-back">
+               <div class="text-box">
+                <h1>pitviper.es</h1>
+                <p><strong>Shopify</strong> based website aimed to the Southern Europeans market.</p>
+                <a target="_blank" rel="noopener noreferrer" href="https://pitviper.eu"><button>GO</button></a>
               </div>
+             </div>
 
-              </div>
-            </div>
+             </div>
+           </div>
+
 
             <div class="flip-card">
              <div class="flip-card-inner">
 
               <div class="flip-card-front">
                 <img src="img/outbraker-tile.jpg" alt="Outbraker website">
+                <div class="overlay">
+                  <h2 class="project-name">OUTBRAKER</h2>
+                  <div class="status-container">
+                    <div class="status-container">
+                      <span class="tag status live">
+                        <span class="dot"></span> live
+                      </span>
+                    </div>
+                  <div class="tags">
+                    <span class="tag wordpress">WordPress</span>
+                    <span class="tag flatsome">Flatsome</span>
+                    <span class="tag woocommerce">Woocommerce</span>
+                    <span class="tag b2c">B2C</span>
+                  </div>
+                </div>
+              </div>
               </div>
 
               <div class="flip-card-back">
@@ -1192,29 +1541,27 @@ footer .socials a:hover {
               </div>
             </div>
 
-              <div class="flip-card">
-               <div class="flip-card-inner">
 
-               <div class="flip-card-front">
-                 <img src="img/pitviper-tile.jpg" alt="Pit Viper Spain website">
-               </div>
-
-               <div class="flip-card-back">
-                 <div class="text-box">
-                  <h1>pitviper.es</h1>
-                  <p><strong>Shopify</strong> based website aimed to the Southern Europeans market.</p>
-                  <a target="_blank" rel="noopener noreferrer" href="https://pitviper.eu"><button>GO</button></a>
-                </div>
-               </div>
-
-               </div>
-             </div>
 
              <div class="flip-card">
                <div class="flip-card-inner">
 
                  <div class="flip-card-front">
                    <img src="img/comunitats-tile.jpg" alt="Comunitats BCN website">
+                   <div class="overlay">
+                     <h2 class="project-name">COMUNITATS BCN</h2>
+                     <div class="status-container">
+                       <div class="status-container">
+                         <span class="tag status live">
+                           <span class="dot"></span> live
+                         </span>
+                       </div>
+                     <div class="tags">
+                       <span class="tag wordpress">Wordpress</span>
+                       <span class="tag elementor">Elementor</span>
+                     </div>
+                   </div>
+                  </div>
                  </div>
 
                  <div class="flip-card-back">
@@ -1229,87 +1576,26 @@ footer .socials a:hover {
                </div>
              </div>
 
-             <div class="flip-card">
-               <div class="flip-card-inner">
-
-                 <div class="flip-card-front">
-                   <img src="img/curcushine-tile.jpg" alt="Curcushine">
-                 </div>
-
-                 <div class="flip-card-back">
-                   <div class="text-box">
-                     <h1>Lubrizol Life Sciences - Curcushine</h1>
-                     <p><strong>Wordpress</strong> based websites designed with <strong>Elementor</strong>.</p>
-                     <p>This is one of a set of brand landing pages created for Lubrizol company</p>
-                     <a target="_blank" rel="noopener noreferrer" href="https://curcushine.info/"><button>GO</button></a>
-                   </div>
-                 </div>
-
-               </div>
-             </div>
-
-             <div class="flip-card">
-               <div class="flip-card-inner">
-
-                 <div class="flip-card-front">
-                   <img src="img/magshape-tile.jpg" alt="Curcushine">
-                 </div>
-
-                 <div class="flip-card-back">
-                   <div class="text-box">
-                     <h1>Lubrizol Life Sciences - Magshape</h1>
-                     <p><strong>Wordpress</strong> based websites designed with <strong>Elementor</strong>.</p>
-                     <p>This is one of a set of brand landing pages created for Lubrizol company</p>
-                     <a target="_blank" rel="noopener noreferrer" href="https://magshape.info/"><button>GO</button></a>
-                   </div>
-                 </div>
-
-               </div>
-             </div>
-
-             <div class="flip-card">
-               <div class="flip-card-inner">
-
-                 <div class="flip-card-front">
-                   <img src="img/newcaff-tile.webp" alt="Curcushine">
-                 </div>
-
-                 <div class="flip-card-back">
-                   <div class="text-box">
-                     <h1>Lubrizol Life Sciences - Newcaff</h1>
-                     <p><strong>Wordpress</strong> based websites designed with <strong>Elementor</strong>.</p>
-                     <p>This is one of a set of brand landing pages created for Lubrizol company</p>
-                     <a target="_blank" rel="noopener noreferrer" href="https://newcaff.info/"><button>GO</button></a>
-                   </div>
-                 </div>
-
-               </div>
-             </div>
-
-             <div class="flip-card">
-               <div class="flip-card-inner">
-
-                 <div class="flip-card-front">
-                   <img src="img/diobar-tile.jpg" alt="Diobar BCN">
-                 </div>
-
-                 <div class="flip-card-back">
-                   <div class="text-box">
-                     <h3>Diobar BCN</h3>
-                     <p><strong>Wordpress</strong> based website designed with <strong>Elementor</strong>.</p>
-                     <p>It features custom Wordpress posts to manage efficiently the events of the club.</p>
-                     <a target="_blank" rel="noopener noreferrer" href="https://diobarbcn.com/"><button>GO</button></a>
-                   </div>
-                 </div>
-
-               </div>
-             </div>
 
              <div class="flip-card">
                <div class="flip-card-inner">
 
                  <div class="flip-card-front">
                    <img src="img/hausmann-tile.jpg" alt="Hausmann Aromatic">
+                   <div class="overlay">
+                   <h2 class="project-name">HAUSMANN AROMATIC</h2>
+                   <div class="status-container">
+                     <div class="status-container">
+                       <span class="tag status live">
+                         <span class="dot"></span> live
+                       </span>
+                     </div>
+                   <div class="tags">
+                     <span class="tag wordpress">Wordpress</span>
+                     <span class="tag elementor">Elementor</span>
+                   </div>
+                 </div>
+                </div>
                  </div>
 
                  <div class="flip-card-back">
@@ -1328,6 +1614,20 @@ footer .socials a:hover {
 
                  <div class="flip-card-front">
                    <img src="img/agenciavandv-tile.jpg" alt="Agencia VandV">
+                   <div class="overlay">
+                   <h2 class="project-name">AGENCIA V&V</h2>
+                   <div class="status-container">
+                     <div class="status-container">
+                       <span class="tag status live">
+                         <span class="dot"></span> live
+                       </span>
+                     </div>
+                   <div class="tags">
+                     <span class="tag wordpress">Wordpress</span>
+                     <span class="tag elementor">Elementor</span>
+                   </div>
+                 </div>
+                </div>
                  </div>
 
                  <div class="flip-card-back">
@@ -1345,25 +1645,23 @@ footer .socials a:hover {
                <div class="flip-card-inner">
 
                  <div class="flip-card-front">
-                   <img src="img/fc-stands-tile.jpg" alt="Factoria Creativa">
-                 </div>
-
-                 <div class="flip-card-back">
-                   <div class="text-box">
-                     <h1>Factoria Creativa - Stands page</h1>
-                     <p><strong>Wordpress</strong> based website designed using <strong>Bootstrap custom templates</strong>.</p>
-                     <a target="_blank" rel="noopener noreferrer" href="https://www.factoriacreativabarcelona.es/stand-feria/"><button>GO</button></a>
+                   <img src="img/evlink-tile.jpg" alt="EV Link">
+                   <div class="overlay">
+                   <h2 class="project-name">EV LINK</h2>
+                   <div class="status-container">
+                     <div class="status-container">
+                       <span class="tag status live">
+                         <span class="dot"></span> live
+                       </span>
+                     </div>
+                   <div class="tags">
+                     <span class="tag wordpress">Wordpress</span>
+                     <span class="tag elementor">Elementor</span>
+                     <span class="tag woocommerce">Woocommerce</span>
+                     <span class="tag b2b">B2B</span>
                    </div>
                  </div>
-
-               </div>
-             </div>
-
-             <div class="flip-card">
-               <div class="flip-card-inner">
-
-                 <div class="flip-card-front">
-                   <img src="img/evlink-tile.jpg" alt="EV Link">
+                </div>
                  </div>
 
                  <div class="flip-card-back">
@@ -1383,6 +1681,20 @@ footer .socials a:hover {
 
                  <div class="flip-card-front">
                    <img src="img/conillas-tile.jpg" alt="Ignasi Conillas">
+                   <div class="overlay">
+                   <h2 class="project-name">IGNASI CONILLAS</h2>
+                   <div class="status-container">
+                     <div class="status-container">
+                       <span class="tag status live">
+                         <span class="dot"></span> live
+                       </span>
+                     </div>
+                   <div class="tags">
+                     <span class="tag wordpress">Wordpress</span>
+                     <span class="tag elementor">Elementor</span>
+                   </div>
+                 </div>
+                </div>
                  </div>
 
                  <div class="flip-card-back">
@@ -1396,18 +1708,102 @@ footer .socials a:hover {
                </div>
              </div>
 
+
+             <div class="flip-card">
+               <div class="flip-card-inner">
+
+                 <div class="flip-card-front">
+                   <img src="img/fc-stands-tile.jpg" alt="Factoria Creativa">
+                   <div class="overlay">
+                   <h2 class="project-name">FACTORIA CREATIVA</h2>
+                   <div class="status-container">
+                     <div class="status-container">
+                       <span class="tag status live">
+                         <span class="dot"></span> live
+                       </span>
+                     </div>
+                   <div class="tags">
+                     <span class="tag wordpress">Wordpress</span>
+                     <span class="tag bootstrap">Bootstrap</span>
+                   </div>
+                 </div>
+                </div>
+                 </div>
+
+                 <div class="flip-card-back">
+                   <div class="text-box">
+                     <h1>Factoria Creativa - Stands page</h1>
+                     <p><strong>Wordpress</strong> based website designed using <strong>Bootstrap custom templates</strong>.</p>
+                     <a target="_blank" rel="noopener noreferrer" href="https://www.factoriacreativabarcelona.es/stand-feria/"><button>GO</button></a>
+                   </div>
+                 </div>
+
+               </div>
+             </div>
+
+
+             <div class="flip-card">
+               <div class="flip-card-inner">
+
+                 <div class="flip-card-front">
+                   <img src="img/diobar-tile.jpg" alt="Diobar BCN">
+                   <div class="overlay">
+                   <h2 class="project-name">DIOBAR BCN</h2>
+                   <div class="status-container">
+                     <div class="status-container">
+                       <span class="tag status live">
+                         <span class="dot"></span> live
+                       </span>
+                     </div>
+                   <div class="tags">
+                     <span class="tag wordpress">Wordpress</span>
+                     <span class="tag elementor">Elementor</span>
+                   </div>
+                 </div>
+                </div>
+                 </div>
+
+                 <div class="flip-card-back">
+                   <div class="text-box">
+                     <h3>Diobar BCN</h3>
+                     <p><strong>Wordpress</strong> based website designed with <strong>Elementor</strong>.</p>
+                     <p>It features custom Wordpress posts to manage efficiently the events of the club.</p>
+                     <a target="_blank" rel="noopener noreferrer" href="https://diobarbcn.com/"><button>GO</button></a>
+                   </div>
+                 </div>
+
+               </div>
+             </div>
+
+
              <div class="flip-card">
               <div class="flip-card-inner">
 
               <div class="flip-card-front">
                 <img src="img/TwoFive-website-tile.jpg" alt="Two Five website">
+                <div class="overlay">
+                   <h2 class="project-name">TWOFIVE</h2>
+                   <div class="status-container">
+                     <div class="status-container">
+                       <span class="tag status live">
+                         <span class="dot"></span> live
+                       </span>
+                     </div>
+                   <div class="tags">
+                     <span class="tag wordpress">Wordpress</span>
+                     <span class="tag flatsome">Flatsome</span>
+                     <span class="tag woocommerce">Woocommerce</span>
+                     <span class="tag b2c">B2C</span>
+                   </div>
+                 </div>
+                </div>
               </div>
 
               <div class="flip-card-back">
                 <div class="text-box">
                    <h1>twofivegloves.com</h1>
                    <p>I played a key role in creating a brand focused on football goalkeeper gloves.</p>
-                   <p>Since 2019, we built a strong digital infrastructure that supported substantial revenue growth and attracted international visitors across various markets.</p>
+                   <p>Since 2019, we built a strong digital infrastructure that supported substantial revenue growth and attracted international visitors.</p>
                    <a target="_blank" rel="noopener noreferrer" href="https://twofivegloves.com"><button>GO</button></a>
                  </div>
               </div>
@@ -1420,6 +1816,22 @@ footer .socials a:hover {
 
              <div class="flip-card-front">
                <img src="img/twofiveaustralia-tile.jpg" alt="Two Five Australia">
+               <div class="overlay">
+                   <h2 class="project-name">TWOFIVE OCEANIA</h2>
+                   <div class="status-container">
+                     <div class="status-container">
+                       <span class="tag status archived">
+                         <span class="dot"></span> archived
+                       </span>
+                     </div>
+                   <div class="tags">
+                     <span class="tag wordpress">Wordpress</span>
+                     <span class="tag flatsome">Flatsome</span>
+                     <span class="tag woocommerce">Woocommerce</span>
+                     <span class="tag b2c">B2C</span>
+                   </div>
+                 </div>
+                </div>
              </div>
 
              <div class="flip-card-back">
@@ -1438,6 +1850,22 @@ footer .socials a:hover {
 
              <div class="flip-card-front">
                <img src="img/serportero-tile.jpg" alt="Serportero Shop website">
+               <div class="overlay">
+                   <h2 class="project-name">SERPORTERO</h2>
+                   <div class="status-container">
+                     <div class="status-container">
+                       <span class="tag status live">
+                         <span class="dot"></span> live
+                       </span>
+                     </div>
+                   <div class="tags">
+                     <span class="tag wordpress">Wordpress</span>
+                     <span class="tag flatsome">Flatsome</span>
+                     <span class="tag woocommerce">Woocommerce</span>
+                     <span class="tag b2c">B2C</span>
+                   </div>
+                 </div>
+                </div>
              </div>
 
              <div class="flip-card-back">
@@ -1451,11 +1879,125 @@ footer .socials a:hover {
              </div>
             </div>
 
+
+            <div class="flip-card">
+              <div class="flip-card-inner">
+
+                <div class="flip-card-front">
+                  <img src="img/curcushine-tile.jpg" alt="Curcushine">
+                  <div class="overlay">
+                  <h2 class="project-name">CURCUSHINE</h2>
+                  <div class="status-container">
+                    <div class="status-container">
+                      <span class="tag status archived">
+                        <span class="dot"></span> archived
+                      </span>
+                    </div>
+                  <div class="tags">
+                    <span class="tag wordpress">Wordpress</span>
+                    <span class="tag elementor">Elementor</span>
+                  </div>
+                </div>
+               </div>
+                </div>
+
+                <div class="flip-card-back">
+                  <div class="text-box">
+                    <h1>Lubrizol Life Sciences - Curcushine</h1>
+                    <p><strong>Wordpress</strong> based websites designed with <strong>Elementor</strong>.</p>
+                    <p>This is one of a set of brand landing pages created for Lubrizol company</p>
+                    <a target="_blank" rel="noopener noreferrer" href="https://curcushine.info/"><button>GO</button></a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="flip-card">
+              <div class="flip-card-inner">
+
+                <div class="flip-card-front">
+                  <img src="img/magshape-tile.jpg" alt="Curcushine">
+                  <div class="overlay">
+                  <h2 class="project-name">MAGSHAPE</h2>
+                  <div class="status-container">
+                    <div class="status-container">
+                      <span class="tag status archived">
+                        <span class="dot"></span> archived
+                      </span>
+                    </div>
+                  <div class="tags">
+                    <span class="tag wordpress">Wordpress</span>
+                    <span class="tag elementor">Elementor</span>
+                  </div>
+                </div>
+               </div>
+                </div>
+
+                <div class="flip-card-back">
+                  <div class="text-box">
+                    <h1>Lubrizol Life Sciences - Magshape</h1>
+                    <p><strong>Wordpress</strong> based websites designed with <strong>Elementor</strong>.</p>
+                    <p>This is one of a set of brand landing pages created for Lubrizol company</p>
+                    <a target="_blank" rel="noopener noreferrer" href="https://magshape.info/"><button>GO</button></a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="flip-card">
+              <div class="flip-card-inner">
+
+                <div class="flip-card-front">
+                  <img src="img/newcaff-tile.webp" alt="Curcushine">
+                  <div class="overlay">
+                  <h2 class="project-name">NEWCAFF</h2>
+                  <div class="status-container">
+                    <div class="status-container">
+                      <span class="tag status archived">
+                        <span class="dot"></span> archived
+                      </span>
+                    </div>
+                  <div class="tags">
+                    <span class="tag wordpress">Wordpress</span>
+                    <span class="tag elementor">Elementor</span>
+                  </div>
+                </div>
+               </div>
+                </div>
+
+                <div class="flip-card-back">
+                  <div class="text-box">
+                    <h1>Lubrizol Life Sciences - Newcaff</h1>
+                    <p><strong>Wordpress</strong> based websites designed with <strong>Elementor</strong>.</p>
+                    <p>This is one of a set of brand landing pages created for Lubrizol company</p>
+                    <a target="_blank" rel="noopener noreferrer" href="https://newcaff.info/"><button>GO</button></a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
              <div class="flip-card">
                <div class="flip-card-inner">
 
                <div class="flip-card-front">
                  <img src="img/NoeCha-website2020-tile.jpg" alt="NoeCha 2020 website">
+                 <div class="overlay">
+                   <h2 class="project-name">NOECHA (2020)</h2>
+                   <div class="status-container">
+                     <div class="status-container">
+                       <span class="tag status archived">
+                         <span class="dot"></span> archived
+                       </span>
+                     </div>
+                   <div class="tags">
+                    <span class="tag webstack">HTML/CSS/JAVASCRIPT</span>
+                   </div>
+                 </div>
+                </div>
                </div>
 
                <div class="flip-card-back">
@@ -1475,6 +2017,20 @@ footer .socials a:hover {
 
               <div class="flip-card-front">
                 <img src="img/NoeCha-website-tile.jpg" alt="NoeCha website">
+                <div class="overlay">
+                   <h2 class="project-name">NOECHA</h2>
+                   <div class="status-container">
+                     <div class="status-container">
+                       <span class="tag status archived">
+                         <span class="dot"></span> archived
+                       </span>
+                     </div>
+                   <div class="tags">
+                     <span class="tag muse">Adobe Muse</span>
+                     <span class="tag b2b">B2B</span>
+                   </div>
+                 </div>
+                </div>
               </div>
 
               <div class="flip-card-back">
@@ -1838,8 +2394,8 @@ footer .socials a:hover {
   </div>
                 </div>
               </section>
-			  
-			  
+
+
 			  <!-- Section: Services -->
 <section class="what-can-i-do" id="services">
   <div class="what-can-i-do-header">
@@ -1940,7 +2496,9 @@ footer .socials a:hover {
                                   <p style="font-size: 1.2rem;">My approach combines creativity, functionality, and business strategy. I collaborate closely with my clients to ensure their brands not only look great but also operate efficiently and align with their goals. Whether it’s building robust e-commerce platforms, optimizing user experiences, or providing ongoing advice, I strive to be a reliable partner in their growth journey.</p>
                               </div>
                           </div>
+
                       </div>
+                      <a href="#hero" class="contact-btn">Contact me</a>
                   </div>
               </section>
 
@@ -1955,12 +2513,12 @@ footer .socials a:hover {
                       </a>
                   </div>
 
-                  <!-- Funding generalitat 
+                  <!-- Funding generalitat
 				  <div class="funding">
                       <img src="img/logo/cofinancat-per-la-UE.jpg" alt="Cofinançat per la UE" class="funding-logo">
                       <img src="img/logo/Next-Generation-Generalitat.png" alt="Next Generation + Generalitat" class="funding-logo">
                   </div>
-				  
+
                   <p class="funding-text">
                     Aquesta actuació està impulsada i subvencionada pel Departament d'Empresa i Treball i cofinançada per la Unió Europea mitjançant el Fons Social Europeu Plus.
                   </p>
