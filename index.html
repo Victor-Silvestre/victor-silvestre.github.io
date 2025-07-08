@@ -1239,7 +1239,7 @@ footer .socials a:hover {
       <div class="container">
         <div class="hero-content">
           <div class="hero-image">
-            <img src="img/Victor-photo.png" alt="Victor Silvestre">
+            <img id="victor-photo" src="img/Victor-photo.png" alt="Victor Silvestre">
              <div class="graphics"></div> <!-- Optional Graphics -->
             <div class="social-media-icons">
 				<h3>Contact me</h3>
@@ -1318,7 +1318,7 @@ footer .socials a:hover {
         <p style="font-size: 105%;">Looking for help with your next project?<br>
           Let’s bring your vision to life.</p>
         <a href="#hero">
-          <button style="font-size: 105%;">CONTACT ME</button>
+          <button class="contact-btn" style="font-size: 105%; background:white;">CONTACT ME</button>
         </a>
       </div>
     </div>
@@ -2724,6 +2724,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+
+  document.querySelectorAll('.contact-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const img = document.getElementById('victor-photo');
+      img.src = 'img/Victor-photo-smile.png';
+    });
+  });
+
 
 
 
