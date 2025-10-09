@@ -228,6 +228,12 @@ a:hover {
 
 
 /* Hero Section */
+
+/* make the h3 look clickable */
+#contact-title {
+  cursor: pointer;
+}
+
 .hero {
     display: flex;
     align-items: center;
@@ -1242,7 +1248,7 @@ footer .socials a:hover {
             <img id="victor-photo" src="img/Victor-photo.png" alt="Victor Silvestre">
              <div class="graphics"></div> <!-- Optional Graphics -->
             <div class="social-media-icons">
-				<h3>Contact me</h3>
+				<h3 id="contact-title">Contact me</h3>
               <a href="https://www.linkedin.com/in/victor-silvestre-brotons-1784b7128/" target="_blank">
                 <i class="fab fa-linkedin"></i>
               </a>
@@ -1256,11 +1262,10 @@ footer .socials a:hover {
           </div>
           <div class="hero-text">
             <h1>Hello! I'm Victor,</h1>
-            <p class="tagline">WordPress Websites & Business Digital Solutions</p>
+            <p class="tagline">E-Commerce Manager & Business Digital Solutions</p>
             <p class="intro">
-              WordPress Development & Woocommerce | UI/UX Design | Brand Communication | Business Workflow<br><br>
-              I offer comprehensive advice and solutions to help businesses build and strengthen their digital presence.
-			  My specialty is building and maintaining <strong>WordPress and WooCommerce</strong> websites that run smoothly and connect seamlessly with APIs and integrations.
+              <b>WordPress Development & Woocommerce</b> | <b>Shopify</b> | <b>UI/UX Design</b> | <b>Brand Communication</b> | <b>Business Workflow</b><br><br>
+              I offer comprehensive advice and solutions to help businesses build and strengthen their digital presence in <b>Wordpress</b> or <b>Shopify</b>.
             </p>
             <a href="#portfolio" class="btn">Porfolio</a>
 			<a href="#services" class="btn">Services</a>
@@ -2414,8 +2419,8 @@ footer .socials a:hover {
 
 <article class="service-card">
   <i class="icon fa-solid fa-cart-shopping"></i>
-  <h3>WooCommerce Store Setup</h3>
-  <p>Get your online store ready to sell, with optimized design and payment solutions.</p>
+  <h3>E-Commerce Management</h3>
+  <p>Get your online store ready to sell in Shopify or Woocommerce.</p>
   <a href="#hero" class="contact-btn">Contact me</a>
 </article>
 
@@ -2435,6 +2440,131 @@ footer .socials a:hover {
 
   </div>
 </section>
+
+
+<section id="platforms" class="tech-section">
+  <h3>Platforms I work with</h3>
+  <div class="tech-logos">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg" alt="WordPress logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/WooCommerce_logo.svg" alt="WooCommerce logo">
+    <img src="https://static.cdnlogo.com/logos/s/54/shopify.svg" alt="Shopify logo">
+  </div>
+</section>
+
+<section id="stats" class="stats-section">
+  <div class="stat">
+    <span class="counter" data-target="6">0</span><span class="plus">+</span>
+    <p>Years of experience</p>
+  </div>
+  <div class="stat">
+    <span class="counter" data-target="20">0</span><span class="plus">+</span>
+    <p>Projects delivered</p>
+  </div>
+</section>
+
+<style>
+/* --- Tech Section --- */
+.tech-section {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.tech-section h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: #1c1c1c; /* dark gray */
+  font-weight: 600;
+}
+
+.tech-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.tech-logos img {
+  height: 60px;
+  width: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: grayscale(60%) brightness(0.9);
+}
+
+.tech-logos img:hover {
+  transform: scale(1.05);
+  filter: none;
+}
+
+/* --- Stats Section --- */
+.stats-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.stat {
+  font-size: 1.3rem;
+}
+
+.stat .counter {
+  font-size: 3rem;
+  font-weight: 700;
+  display: inline-block;
+  color: #1c1c1c; /* dark gray */
+}
+
+.plus {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #0072ce; /* blue accent from your portfolio */
+}
+
+.stat p {
+  margin-top: 0.3rem;
+  color: #555; /* secondary text color */
+  font-size: 1rem;
+}
+</style>
+
+<script>
+function animateCounters() {
+  const counters = document.querySelectorAll('.counter');
+  const speed = 150; // lower = faster
+
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    const updateCount = () => {
+      const count = +counter.innerText;
+      const increment = target / speed;
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        requestAnimationFrame(updateCount);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCount();
+  });
+}
+
+// Trigger animation when the section is visible
+const statsSection = document.querySelector('#stats');
+let statsPlayed = false;
+
+window.addEventListener('scroll', () => {
+  const rect = statsSection.getBoundingClientRect();
+  if (!statsPlayed && rect.top < window.innerHeight * 0.8) {
+    animateCounters();
+    statsPlayed = true;
+  }
+});
+</script>
+
 
 
 
@@ -2728,11 +2858,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+const img = document.getElementById('victor-photo');
+  
+  // Change image when clicking any contact button
   document.querySelectorAll('.contact-btn').forEach(button => {
     button.addEventListener('click', () => {
-      const img = document.getElementById('victor-photo');
       img.src = 'img/Victor-photo-smile.png';
     });
+  });
+
+  // Also change image when clicking the title
+  const contactTitle = document.getElementById('contact-title');
+  contactTitle.addEventListener('click', () => {
+    img.src = 'img/Victor-photo-smile.png';
   });
 
 
